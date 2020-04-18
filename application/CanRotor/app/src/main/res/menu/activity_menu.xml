@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/SETUP"
+        android:title="SETUP" />
+    <item
+        android:id="@+id/Attitude_menu"
+        android:title="자세계" />
+    <item
+        android:id="@+id/Chart_menu"
+        android:title="CHART" />
+    <item
+        android:id="@+id/PID_Setting"
+        android:title="PID_SETTING" />
+    <item
+        android:id="@+id/Google_Map"
+        android:title="Google_Map" />
+
+</menu>

@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="400dp"
+        android:layout_height="wrap_content"
+        android:background="@color/common_google_signin_btn_text_dark_default"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textView20"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#4A9AA5"
+            android:gravity="center"
+            android:text="세 팅 값"
+            android:textSize="24sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_red_light"
+                android:gravity="center"
+                android:text="P" />
+
+            <TextView
+                android:id="@+id/textView41"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="I" />
+
+
+            <TextView
+                android:id="@+id/textView42"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="D" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:background="@android:color/holo_blue_light"
+                    android:gravity="center"
+                    android:text="Angle_ROLL" />
+
+                <TextView
+                    android:id="@+id/angle_roll_p"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:gravity="center"/>
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:background="@android:color/holo_blue_light"
+                    android:gravity="center"
+                    android:text="Angle_ROLL" />
+
+                <TextView
+                    android:id="@+id/angle_roll_i"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:gravity="center" />
+
+                <TextView
+                    android:id="@+id/textView8"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:background="@android:color/holo_blue_light"
+                    android:gravity="center"
+                    android:text="Angle_ROLL"/>
+
+                <TextView
+                    android:id="@+id/angle_roll_d"
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:gravity="center" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView16"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="Angle_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/angle_pitch_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="Angle_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/angle_pitch_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView203"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="Angle_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/angle_pitch_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="Angle_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/angle_yaw_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="Angle_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/angle_yaw_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_blue_light"
+                android:gravity="center"
+                android:text="Angle_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/angle_yaw_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView30"
+                android:layout_width="104dp"
+                android:layout_height="15dp"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="Dual_Out_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_out_roll_p"
+                android:layout_width="96dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="104dp"
+                android:layout_height="15dp"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="Dual_Out_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_out_roll_i"
+                android:layout_width="94dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView33"
+                android:layout_width="104dp"
+                android:layout_height="15dp"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="Dual_Out_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_out_pitch_p"
+                android:layout_width="96dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView34"
+                android:layout_width="104dp"
+                android:layout_height="15dp"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="Dual_Out_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_out_pitch_i"
+                android:layout_width="96dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView35"
+                android:layout_width="104dp"
+                android:layout_height="15dp"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="Dual_Out_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_out_yaw_p"
+                android:layout_width="96dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="104dp"
+                android:layout_height="15dp"
+                android:background="@android:color/holo_orange_dark"
+                android:gravity="center"
+                android:text="Dual_Out_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_out_yaw_i"
+                android:layout_width="94dp"
+                android:layout_height="15dp"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView50"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_roll_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView51"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_roll_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView52"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_roll_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView53"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_pitch_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView54"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_pitch_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView55"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_pitch_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView56"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_yaw_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView57"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_yaw_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView58"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_green_light"
+                android:gravity="center"
+                android:text="Dual_In_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/dual_in_yaw_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView60"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_roll_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView61"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_roll_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView62"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_ROLL"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_roll_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView63"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_pitch_p"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView64"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_pitch_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView65"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_PITCH"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_pitch_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView66"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_yaw_p"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView67"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_yaw_i"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/textView68"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:background="@android:color/holo_purple"
+                android:gravity="center"
+                android:text="Rate_In_YAW"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/rate_yaw_d"
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/button_Read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="읽어오기" />
+
+            <Button
+                android:id="@+id/button_Write"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="적용하기" />
+
+            <Button
+                android:id="@+id/button_Save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_weight="1"
+                android:text="저장" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</FrameLayout>

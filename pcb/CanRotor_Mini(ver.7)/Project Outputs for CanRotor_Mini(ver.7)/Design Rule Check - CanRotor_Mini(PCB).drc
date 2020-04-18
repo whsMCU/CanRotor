@@ -1,0 +1,171 @@
+Protel Design System Design Rule Check
+PCB File : C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc
+Date     : 2019-01-06
+Time     : ¿ÀÀü 11:11:18
+
+Processing Rule : Clearance Constraint (Gap=0.15mm) (All),(All)
+Rule Violations :0
+
+Processing Rule : Clearance Constraint (Gap=0.254mm) (InPolygon),(All)
+Rule Violations :0
+
+Processing Rule : Short-Circuit Constraint (Allowed=No) (All),(All)
+Rule Violations :0
+
+Processing Rule : Un-Routed Net Constraint ( (All) )
+Rule Violations :0
+
+Processing Rule : Modified Polygon (Allow modified: No), (Allow shelved: No)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.15mm) (Max=2mm) (Preferred=0.2mm) (All)
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.2mm) (Max=0.5mm) (Preferred=0.3mm) (InNet('VCC33'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.1mm) (Max=0.5mm) (Preferred=0.3mm) (InNet('GND'))
+Rule Violations :0
+
+Processing Rule : Width Constraint (Min=0.5mm) (Max=1mm) (Preferred=0.5mm) (InNet('VBAT'))
+Rule Violations :0
+
+Processing Rule : SMD Neck-Down Constraint (Percent=50%) (All)
+   Violation between SMD Neck-Down Constraint: Between Pad C13-1(34.55mm,7.55mm) on Top Layer And Track (34.55mm,7.55mm)(34.566mm,7.55mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad C19-1(45.4mm,20.15mm) on Top Layer And Track (45.4mm,20.15mm)(48.275mm,20.15mm) on Top Layer Relative Track Width: 90.91%
+   Violation between SMD Neck-Down Constraint: Between Pad C20-1(42.775mm,11.5mm) on Top Layer And Track (43.185mm,11.91mm)(48.412mm,11.91mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D1-1(11.325mm,3.25mm) on Top Layer And Track (11.225mm,3.15mm)(11.325mm,3.25mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D1-2(11.325mm,5.65mm) on Top Layer And Track (9.85mm,5.65mm)(11.325mm,5.65mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D2-1(39mm,47.497mm) on Top Layer And Track (38.948mm,47.549mm)(39mm,47.497mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D2-2(39mm,45.097mm) on Top Layer And Track (39mm,45.097mm)(39.853mm,45.097mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D4-1(11.2mm,44.275mm) on Top Layer And Track (10.1mm,44.275mm)(11.2mm,44.275mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D4-2(11.2mm,46.675mm) on Top Layer And Track (10.2mm,46.675mm)(11.2mm,46.675mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D5-1(37.75mm,4.85mm) on Top Layer And Track (36.175mm,3.275mm)(37.75mm,4.85mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad D5-2(37.75mm,2.45mm) on Top Layer And Track (37.75mm,2.45mm)(39.375mm,2.45mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-1(19.29mm,17.663mm) on Top Layer And Track (18.863mm,17.663mm)(19.29mm,17.663mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-10(21.84mm,19.413mm) on Top Layer And Track (21.84mm,19.413mm)(22.413mm,19.413mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-11(21.84mm,19.813mm) on Top Layer And Track (21.84mm,19.813mm)(22.313mm,19.813mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-13(21.29mm,20.763mm) on Top Layer And Track (21.29mm,20.763mm)(21.29mm,23.215mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-19(18.74mm,20.213mm) on Top Layer And Track (18.74mm,19.813mm)(18.74mm,20.213mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-20(18.74mm,19.813mm) on Top Layer And Track (18.74mm,19.813mm)(18.74mm,20.213mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-22(18.74mm,19.013mm) on Top Layer And Track (18.208mm,19.013mm)(18.74mm,19.013mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-23(18.74mm,18.613mm) on Top Layer And Track (17.987mm,18.613mm)(18.74mm,18.613mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-24(18.74mm,18.213mm) on Top Layer And Track (16.588mm,18.213mm)(18.74mm,18.213mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-8(21.84mm,18.613mm) on Top Layer And Track (21.84mm,18.613mm)(21.84mm,19.013mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad IMU-9(21.84mm,19.013mm) on Top Layer And Track (21.84mm,18.613mm)(21.84mm,19.013mm) on Top Layer Relative Track Width: 100.00%
+   Violation between SMD Neck-Down Constraint: Between Pad M1-1(5.984mm,6.918mm) on Top Layer And Track (5.984mm,6.918mm)(7.091mm,8.025mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad M1-2(6.868mm,6.034mm) on Top Layer And Track (6.868mm,6.034mm)(9.751mm,3.15mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad M2-1(44.016mm,43.157mm) on Top Layer And Track (42.525mm,42.425mm)(43.284mm,42.425mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad M2-2(43.132mm,44.041mm) on Top Layer And Track (39.677mm,47.497mm)(43.132mm,44.041mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad M3-1(6.868mm,43.991mm) on Top Layer And Track (6.868mm,43.991mm)(8.001mm,45.125mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad M3-2(5.984mm,43.107mm) on Top Layer And Track (5.984mm,43.107mm)(6.891mm,42.2mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad M4-1(43.132mm,5.984mm) on Top Layer And Track (42.909mm,5.984mm)(43.132mm,5.984mm) on Top Layer Relative Track Width: 125.00%
+   Violation between SMD Neck-Down Constraint: Between Pad M4-2(44.016mm,6.868mm) on Top Layer And Track (43.234mm,7.65mm)(44.016mm,6.868mm) on Top Layer Relative Track Width: 62.50%
+   Violation between SMD Neck-Down Constraint: Between Pad R9-1(39.65mm,28.408mm) on Top Layer And Track (39.65mm,28.408mm)(41.842mm,28.408mm) on Top Layer Relative Track Width: 71.43%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-1(22.95mm,35.45mm) on Top Layer And Track (21.463mm,36.937mm)(22.95mm,35.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-10(22.95mm,30.95mm) on Top Layer And Track (21.55mm,30.95mm)(22.95mm,30.95mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-11(22.95mm,30.45mm) on Top Layer And Track (22.921mm,30.479mm)(22.95mm,30.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-12(22.95mm,29.95mm) on Top Layer And Track (22.95mm,29.95mm)(22.95mm,29.95mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-13(24.25mm,28.65mm) on Top Layer And Track (23.075mm,28.65mm)(24.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-14(24.75mm,28.65mm) on Top Layer And Track (24.75mm,28.65mm)(24.75mm,31.078mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-16(25.75mm,28.65mm) on Top Layer And Track (25.75mm,26.75mm)(25.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-17(26.25mm,28.65mm) on Top Layer And Track (26.25mm,26.175mm)(26.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-18(26.75mm,28.65mm) on Top Layer And Track (26.75mm,25.725mm)(26.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-19(27.25mm,28.65mm) on Top Layer And Track (27.225mm,28.625mm)(27.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-20(27.75mm,28.65mm) on Top Layer And Track (27.75mm,28.65mm)(27.75mm,29.975mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-21(28.25mm,28.65mm) on Top Layer And Track (28.25mm,25mm)(28.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-22(28.75mm,28.65mm) on Top Layer And Track (28.725mm,28.625mm)(28.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-23(29.25mm,28.65mm) on Top Layer And Track (29.25mm,27.253mm)(29.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-24(29.75mm,28.65mm) on Top Layer And Track (29.75mm,26.3mm)(29.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-26(31.05mm,30.45mm) on Top Layer And Track (31.05mm,30.45mm)(32.3mm,30.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-27(31.05mm,30.95mm) on Top Layer And Track (29.25mm,30.1mm)(30.1mm,30.95mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-28(31.05mm,31.45mm) on Top Layer And Track (31.05mm,31.45mm)(32.225mm,31.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-30(31.05mm,32.45mm) on Top Layer And Track (30.234mm,32.45mm)(31.05mm,32.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-31(31.05mm,32.95mm) on Top Layer And Track (30.95mm,32.85mm)(31.05mm,32.95mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-34(31.05mm,34.45mm) on Top Layer And Track (31.05mm,34.45mm)(36.17mm,34.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-36(31.05mm,35.45mm) on Top Layer And Track (31.05mm,35.45mm)(32.725mm,35.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-37(29.75mm,36.75mm) on Top Layer And Track (29.75mm,36.75mm)(31.025mm,36.75mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-39(28.75mm,36.75mm) on Top Layer And Track (28.75mm,36.75mm)(28.75mm,37.95mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-40(28.25mm,36.75mm) on Top Layer And Track (28.25mm,36.75mm)(28.25mm,38.157mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-42(27.25mm,36.75mm) on Top Layer And Track (27.25mm,36.75mm)(27.25mm,36.75mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-43(26.75mm,36.75mm) on Top Layer And Track (26.75mm,36.75mm)(26.75mm,36.75mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-44(26.25mm,36.75mm) on Top Layer And Track (26.25mm,36.75mm)(26.25mm,38.7mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-45(25.75mm,36.75mm) on Top Layer And Track (25.75mm,36.75mm)(25.75mm,38.025mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-46(25.25mm,36.75mm) on Top Layer And Track (25.25mm,33.725mm)(25.25mm,36.75mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-47(24.75mm,36.75mm) on Top Layer And Track (24.7mm,36.8mm)(24.75mm,36.75mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-48(24.25mm,36.75mm) on Top Layer And Track (23.201mm,37.799mm)(24.25mm,36.75mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-5(22.95mm,33.45mm) on Top Layer And Track (21.525mm,33.45mm)(22.95mm,33.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-6(22.95mm,32.95mm) on Top Layer And Track (21.125mm,32.95mm)(22.95mm,32.95mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-7(22.95mm,32.45mm) on Top Layer And Track (21.6mm,32.45mm)(22.95mm,32.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U1-9(22.95mm,31.45mm) on Top Layer And Track (22.85mm,31.35mm)(22.95mm,31.45mm) on Top Layer Relative Track Width: 66.67%
+   Violation between SMD Neck-Down Constraint: Between Pad U2-8(28.663mm,19.295mm) on Top Layer And Track (28.663mm,17.212mm)(28.663mm,19.295mm) on Top Layer Relative Track Width: 53.69%
+   Violation between SMD Neck-Down Constraint: Between Pad U3-1(10.725mm,20.575mm) on Top Layer And Track (10.725mm,20.575mm)(10.725mm,21.825mm) on Top Layer Relative Track Width: 56.60%
+   Violation between SMD Neck-Down Constraint: Between Pad U3-2(10.725mm,21.825mm) on Top Layer And Track (10.725mm,20.575mm)(10.725mm,21.825mm) on Top Layer Relative Track Width: 56.60%
+   Violation between SMD Neck-Down Constraint: Between Pad U4-1(27.975mm,11.9mm) on Top Layer And Track (28.7mm,11.9mm)(29.225mm,12.425mm) on Top Layer Relative Track Width: 54.55%
+   Violation between SMD Neck-Down Constraint: Between Pad U4-3(27.975mm,13.8mm) on Top Layer And Track (28.75mm,13.8mm)(29.625mm,13.8mm) on Top Layer Relative Track Width: 54.55%
+   Violation between SMD Neck-Down Constraint: Between Pad U4-4(25.575mm,13.8mm) on Top Layer And Track (23.35mm,13.8mm)(25.575mm,13.8mm) on Top Layer Relative Track Width: 54.55%
+   Violation between SMD Neck-Down Constraint: Between Pad U4-5(25.575mm,11.9mm) on Top Layer And Track (25.575mm,4.081mm)(25.575mm,11.9mm) on Top Layer Relative Track Width: 54.55%
+   Violation between SMD Neck-Down Constraint: Between Pad U5-1(26.932mm,8.665mm) on Top Layer And Track (26.932mm,8.665mm)(26.932mm,10.043mm) on Top Layer Relative Track Width: 59.06%
+   Violation between SMD Neck-Down Constraint: Between Pad U5-3(26.932mm,6.785mm) on Top Layer And Track (26.932mm,6.785mm)(27.735mm,6.785mm) on Top Layer Relative Track Width: 59.06%
+   Violation between SMD Neck-Down Constraint: Between Pad U5-4(29.218mm,6.785mm) on Top Layer And Track (29.218mm,6.785mm)(30.335mm,6.785mm) on Top Layer Relative Track Width: 98.43%
+   Violation between SMD Neck-Down Constraint: Between Pad U5-5(29.218mm,7.725mm) on Top Layer And Track (28.675mm,7.725mm)(29.218mm,7.725mm) on Top Layer Relative Track Width: 59.06%
+   Violation between SMD Neck-Down Constraint: Between Pad U5-6(29.218mm,8.665mm) on Top Layer And Track (29.218mm,8.665mm)(31.562mm,8.665mm) on Top Layer Relative Track Width: 98.43%
+Rule Violations :79
+
+Processing Rule : Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)
+Rule Violations :0
+
+Processing Rule : Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-1(12.25mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-2(12.25mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-3(37.75mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-4(37.75mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-5(12.25mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-6(12.25mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-7(37.75mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm
+   Violation between Hole Size Constraint: (3mm > 2.54mm) Pad Free-8(37.75mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm
+Rule Violations :8
+
+Processing Rule : Hole To Hole Clearance (Gap=0.254mm) (All),(All)
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Pad Free-1(12.25mm,37.75mm) on Multi-Layer And Pad Free-2(12.25mm,37.75mm) on Multi-Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Pad Free-3(37.75mm,37.75mm) on Multi-Layer And Pad Free-4(37.75mm,37.75mm) on Multi-Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Pad Free-5(12.25mm,12.25mm) on Multi-Layer And Pad Free-6(12.25mm,12.25mm) on Multi-Layer Pad/Via Touching Holes
+   Violation between Hole To Hole Clearance Constraint: (Collision < 0.254mm) Between Pad Free-7(37.75mm,12.25mm) on Multi-Layer And Pad Free-8(37.75mm,12.25mm) on Multi-Layer Pad/Via Touching Holes
+Rule Violations :4
+
+Processing Rule : Minimum Solder Mask Sliver (Gap=0.12mm) (All),(All)
+   Violation between Minimum Solder Mask Sliver Constraint: (0.021mm < 0.12mm) Between Pad IMU-1(19.29mm,17.663mm) on Top Layer And Pad IMU-24(18.74mm,18.213mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.021mm < 0.12mm) Between Pad IMU-12(21.84mm,20.213mm) on Top Layer And Pad IMU-13(21.29mm,20.763mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.021mm < 0.12mm) Between Pad IMU-18(19.29mm,20.763mm) on Top Layer And Pad IMU-19(18.74mm,20.213mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]
+   Violation between Minimum Solder Mask Sliver Constraint: (0.021mm < 0.12mm) Between Pad IMU-6(21.29mm,17.663mm) on Top Layer And Pad IMU-7(21.84mm,18.213mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]
+Rule Violations :4
+
+Processing Rule : Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)
+   Violation between Silk To Solder Mask Clearance Constraint: (0.066mm < 0.1mm) Between Pad D1-1(11.325mm,3.25mm) on Top Layer And Text "D1" (10.868mm,1.758mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.066mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad D4-2(11.2mm,46.675mm) on Top Layer And Text "D4" (10.463mm,47.253mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (Collision < 0.1mm) Between Pad R15-2(18.034mm,46.999mm) on Top Layer And Text "Q3" (16.471mm,46.769mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.087mm < 0.1mm) Between Pad SWD-6(48.2mm,27.975mm) on Top Layer And Track (45.6mm,27.525mm)(46.55mm,27.525mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.087mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.087mm < 0.1mm) Between Pad SWD-7(48.2mm,38.075mm) on Top Layer And Track (45.6mm,38.525mm)(46.55mm,38.525mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.087mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.016mm < 0.1mm) Between Pad U4-1(27.975mm,11.9mm) on Top Layer And Track (26.275mm,11.55mm)(27.275mm,11.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.016mm < 0.1mm) Between Pad U4-3(27.975mm,13.8mm) on Top Layer And Track (26.275mm,14.15mm)(27.275mm,14.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.016mm < 0.1mm) Between Pad U4-4(25.575mm,13.8mm) on Top Layer And Track (26.275mm,14.15mm)(27.275mm,14.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]
+   Violation between Silk To Solder Mask Clearance Constraint: (0.016mm < 0.1mm) Between Pad U4-5(25.575mm,11.9mm) on Top Layer And Track (26.275mm,11.55mm)(27.275mm,11.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]
+Rule Violations :9
+
+Processing Rule : Silk to Silk (Clearance=0.1mm) (All),(All)
+   Violation between Silk To Silk Clearance Constraint: (0.058mm < 0.1mm) Between Text "I2C" (5.45mm,39.075mm) on Top Overlay And Track (5.18mm,38.79mm)(7.72mm,38.79mm) on Top Overlay Silk Text to Silk Clearance [0.058mm]
+   Violation between Silk To Silk Clearance Constraint: (0.093mm < 0.1mm) Between Text "Q3" (16.471mm,46.769mm) on Top Overlay And Track (17.684mm,46.049mm)(17.684mm,46.449mm) on Top Overlay Silk Text to Silk Clearance [0.093mm]
+   Violation between Silk To Silk Clearance Constraint: (0.045mm < 0.1mm) Between Text "RX" (3.575mm,29.3mm) on Top Overlay And Track (5.18mm,28.63mm)(5.18mm,38.79mm) on Top Overlay Silk Text to Silk Clearance [0.045mm]
+   Violation between Silk To Silk Clearance Constraint: (0.095mm < 0.1mm) Between Text "RX" (39.375mm,29.75mm) on Top Overlay And Track (41.03mm,29.13mm)(41.03mm,39.29mm) on Top Overlay Silk Text to Silk Clearance [0.095mm]
+Rule Violations :4
+
+Processing Rule : Net Antennae (Tolerance=0mm) (All)
+Rule Violations :0
+
+Processing Rule : Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)
+Rule Violations :0
+
+
+Violations Detected : 108
+Waived Violations : 0
+Time Elapsed        : 00:00:00

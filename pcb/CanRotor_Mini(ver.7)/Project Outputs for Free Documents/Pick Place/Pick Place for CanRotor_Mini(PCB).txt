@@ -1,0 +1,98 @@
+Altium Designer Pick and Place Locations
+C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\Project Outputs for Free Documents\Pick Place\Pick Place for CanRotor_Mini(PCB).txt
+
+========================================================================================================================
+File Design Information:
+
+Date:       06-01-19
+Time:       11:24
+Revision:   Not in VersionControl
+Variant:    No variations
+Units used: mm
+
+Designator Comment             Layer       Footprint                            Center-X(mm) Center-Y(mm) Rotation Description                                                                                              
+SWD        0533980571          TopLayer    MOLEX_0533980571_0533980571(Primary) 46.8000      33.0250      90       "Conn Shrouded Header HDR 5 POS 1.25mm Solder ST SMD PicoBladeÃ¢â?Â¢ Embossed T/R"                      
+U3         MS561101BA03-50     TopLayer    SON125P500X300X100-8N                9.5250       22.4500      180      "Pressure Sensor 1.44V to 3.6V 0.01bar to 1.2bar Absolute 8-Pin QFN T/R"                                 
+U2         24LC256T-I/SN       TopLayer    SOIC127P600X175-8N                   31.0250      21.2000      180      "EEPROM Serial-I2C 256K-bit 32K x 8 3.3V/5V 8-Pin SOIC N T/R"                                            
+D3         LL-R3528RGBC-008-B  TopLayer    LED_LL-R3528RGBC-008-B               24.9250      2.4805       270      "LED; SMD; 3528, PLCC2; RGB; 3.5x2.8mm; 120°; Red lumin: 1"                                              
+R24        Res3                TopLayer    J1-0603                              28.0250      2.3750       90       Resistor                                                                                                 
+R23        Res3                TopLayer    J1-0603                              19.8250      2.3750       90       Resistor                                                                                                 
+R22        Res3                TopLayer    J1-0603                              21.8500      2.3750       90       Resistor                                                                                                 
+I2C        "Header 4"          TopLayer    HDR1X4                               6.4500       33.7100      90       "Header, 4-Pin"                                                                                          
+C20        "Cap Semi"          TopLayer    1608[0603]                           42.7750      10.8000      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+C12        "Cap Semi"          TopLayer    1608[0603]                           28.0250      17.1500      360      "Capacitor (Semiconductor SIM Model)"                                                                    
+U5         LTC3200ES6-5PBF     TopLayer    SOT-23_S6                            28.0750      7.7250       0        "LTC3200 - Low Noise, Regulated Charge Pump DC/DC Converters"                                            
+C26        "Cap Semi"          TopLayer    6-0805_L                             31.5722      7.8750       270      "Capacitor (Semiconductor SIM Model)"                                                                    
+C15        "Cap Semi"          TopLayer    1608[0603]                           9.4500       17.9750      360      "Capacitor (Semiconductor SIM Model)"                                                                    
+R10        Res3                TopLayer    J1-0603                              35.8648      29.2354      90       Resistor                                                                                                 
+R9         Res3                TopLayer    J1-0603                              38.9000      28.4082      180      Resistor                                                                                                 
+C28        "Cap Semi"          TopLayer    1608[0603]                           34.0614      29.2100      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+U1         STM32F103CBT6       TopLayer    STM-LQFP48_N                         27.0000      32.7000      360      "ARM Cortex-M3 32-bit MCU, 128 KB Flash, 20 KB Internal RAM, 37 I/Os, 48-pin LQFP, -40 to 85 degC, Tray" 
+R1         Res3                TopLayer    J1-0603                              14.8590      22.1996      180      Resistor                                                                                                 
+RADIO      "Header 5X2"        TopLayer    HDR2X5                               2.7902       18.8326      90       "Header, 5-Pin, Dual row"                                                                                
+PSW        "Header 2"          TopLayer    HDR1X2                               48.4124      13.1800      270      "Header, 2-Pin"                                                                                          
+MOTOR      "Header 4X2A"       TopLayer    HDR2X4_CEN                           38.6114      20.9718      270      "Header, 4-Pin, Dual row"                                                                                
+G          "Header 4"          TopLayer    HDR1X4                               42.4214      20.9688      90       "Header, 4-Pin"                                                                                          
+C17        "Cap Semi"          TopLayer    1608[0603]                           25.0670      18.1278      180      "Capacitor (Semiconductor SIM Model)"                                                                    
+C10        "Cap Semi"          TopLayer    1608[0603]                           19.7866      28.0638      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+C9         "Cap Semi"          TopLayer    6-0805_L                             23.9776      41.3258      360      "Capacitor (Semiconductor SIM Model)"                                                                    
+C3         "Cap Semi"          TopLayer    6-0805_L                             41.4500      13.4000      0        "Capacitor (Semiconductor SIM Model)"                                                                    
+C24        "Cap Semi"          TopLayer    1608[0603]                           18.1000      12.2001      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C21        "Cap Semi"          TopLayer    6-0805_L                             33.7750      13.0250      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+HM-11      HM-11               BottomLayer HM-11                                25.0000      10.7500      360      HM-11                                                                                                    
+C19        "Cap Semi"          TopLayer    C1206                                45.4000      21.5000      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C11        "Cap Semi"          TopLayer    1608[0603]                           17.2466      28.0638      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+UART2      "Header 4"          TopLayer    HDR1X4                               1.5250       33.7100      90       "Header, 4-Pin"                                                                                          
+L1         Inductor            TopLayer    1608[0603]                           15.6749      12.2001      90       Inductor                                                                                                 
+C27        "Cap Semi"          TopLayer    1608[0603]                           23.3000      14.4500      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C25        "Cap Semi"          TopLayer    6-0805_L                             14.5288      27.8638      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C22        "Cap Semi"          TopLayer    1608[0603]                           30.7249      12.9000      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+C5         "Cap Semi"          TopLayer    1608[0603]                           21.4630      38.2524      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+C6         "Cap Semi"          TopLayer    1608[0603]                           29.7751      25.5750      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C7         "Cap Semi"          TopLayer    1608[0603]                           34.3154      35.7886      180      "Capacitor (Semiconductor SIM Model)"                                                                    
+C8         "Cap Semi"          TopLayer    1608[0603]                           23.9014      39.4970      180      "Capacitor (Semiconductor SIM Model)"                                                                    
+C1         "Cap Semi"          TopLayer    1608[0603]                           19.7867      35.4330      270      "Capacitor (Semiconductor SIM Model)"                                                                    
+C2         "Cap Semi"          TopLayer    1608[0603]                           19.7867      31.9532      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C4         "Cap Semi"          TopLayer    1608[0603]                           38.9750      41.0000      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C13        "Cap Semi"          TopLayer    1608[0603]                           34.5500      8.2500       90       "Capacitor (Semiconductor SIM Model)"                                                                    
+C16        "Cap Semi"          TopLayer    6-0805_L                             22.1250      23.2500      180      "Capacitor (Semiconductor SIM Model)"                                                                    
+C18        "Cap Semi"          TopLayer    1608[0603]                           25.0670      19.5286      180      "Capacitor (Semiconductor SIM Model)"                                                                    
+C23        "Cap Semi"          TopLayer    6-0805_L                             20.4250      12.4000      90       "Capacitor (Semiconductor SIM Model)"                                                                    
+BLE1       LED2                TopLayer    LED0603                              18.3226      6.8626       270      "Typical RED, GREEN, YELLOW, AMBER GaAs LED"                                                             
+POWER1     POWER               TopLayer    LED0603                              20.8810      45.8724      90       "Typical RED, GREEN, YELLOW, AMBER GaAs LED"                                                             
+ST1        State0              TopLayer    LED0603                              26.2266      45.8724      90       "Typical RED, GREEN, YELLOW, AMBER GaAs LED"                                                             
+ST2        State1              TopLayer    LED0603                              31.5722      45.8724      90       "Typical RED, GREEN, YELLOW, AMBER GaAs LED"                                                             
+D1         "D Schottky"        TopLayer    SOD-323                              11.3250      4.4500       90       "Schottky Diode"                                                                                         
+D2         "D Schottky"        TopLayer    SOD-323                              39.0000      46.2967      270      "Schottky Diode"                                                                                         
+D5         "D Schottky"        TopLayer    SOD-323                              37.7500      3.6502       270      "Schottky Diode"                                                                                         
+D4         "D Schottky"        TopLayer    SOD-323                              11.2000      45.4750      90       "Schottky Diode"                                                                                         
+M1         53261-0271          TopLayer    MOLEX_53261-0271                     4.4988       4.5488       315      "Conn Shrouded Header HDR 2 POS 1.25mm Solder RA SMD PicoBlade%E2%84%A2 Embossed T/R"                    
+M2         53261-0271          TopLayer    MOLEX_53261-0271                     45.5012      45.5262      135      "Conn Shrouded Header HDR 2 POS 1.25mm Solder RA SMD PicoBlade%E2%84%A2 Embossed T/R"                    
+M4         53261-0271          TopLayer    MOLEX_53261-0271                     45.5012      4.4988       45       "Conn Shrouded Header HDR 2 POS 1.25mm Solder RA SMD PicoBlade%E2%84%A2 Embossed T/R"                    
+M3         53261-0271          TopLayer    MOLEX_53261-0271                     4.4988       45.4762      225      "Conn Shrouded Header HDR 2 POS 1.25mm Solder RA SMD PicoBlade%E2%84%A2 Embossed T/R"                    
+UART1      "Header 4"          TopLayer    HDR1X4                               42.3000      34.2100      90       "Header, 4-Pin"                                                                                          
+BAT        "Header 2"          TopLayer    HDR1X2                               48.3750      21.5200      90       "Header, 2-Pin"                                                                                          
+Q1         IRLML2502           TopLayer    SOT23                                14.3751      3.7751       180      ""                                                                                                       
+Q2         IRLML2502           TopLayer    SOT23                                36.1000      46.4490      360      ""                                                                                                       
+Q4         IRLML2502           TopLayer    SOT23                                33.9751      2.9251       180      ""                                                                                                       
+Q3         IRLML2502           TopLayer    SOT23                                15.1500      45.5500      360      ""                                                                                                       
+R2         Res3                TopLayer    J1-0603                              28.1000      41.5750      90       Resistor                                                                                                 
+R3         Res3                TopLayer    J1-0603                              37.8760      31.2230      270      Resistor                                                                                                 
+R4         Res3                TopLayer    J1-0603                              37.9015      34.2710      90       Resistor                                                                                                 
+R5         Res3                TopLayer    J1-0603                              15.1378      18.1187      180      Resistor                                                                                                 
+R6         Res3                TopLayer    J1-0603                              15.1378      19.9187      180      Resistor                                                                                                 
+R8         Res3                TopLayer    J1-0603                              21.3475      7.2376       90       Resistor                                                                                                 
+R15        Res3                TopLayer    J1-0603                              18.0340      46.2491      90       Resistor                                                                                                 
+R16        Res3                TopLayer    J1-0603                              23.3795      46.2491      90       Resistor                                                                                                 
+R17        Res3                TopLayer    J1-0603                              28.7251      46.2491      90       Resistor                                                                                                 
+R11        Res3                TopLayer    J1-0603                              13.8400      9.3720       360      Resistor                                                                                                 
+R12        Res3                TopLayer    J1-0603                              13.8400      7.5940       180      Resistor                                                                                                 
+R13        Res3                TopLayer    J1-0603                              34.3876      40.9815      180      Resistor                                                                                                 
+R14        Res3                TopLayer    J1-0603                              34.3876      42.5816      360      Resistor                                                                                                 
+R20        Res3                TopLayer    J1-0603                              37.8534      9.2222       360      Resistor                                                                                                 
+R21        Res3                TopLayer    J1-0603                              37.8534      7.4696       180      Resistor                                                                                                 
+R18        Res3                TopLayer    J1-0603                              14.9205      40.5533      360      Resistor                                                                                                 
+R19        Res3                TopLayer    J1-0603                              14.9421      42.2041      180      Resistor                                                                                                 
+IMU        MPU-9250            TopLayer    QFN40P300X300X105-25N                20.2904      19.2134      90       "SMD Gyroscope/Accelerometer/Magnetometer Sensor%3B 9-AXIS"                                              
+U4         RT9193-33GB         TopLayer    SOT-23-5                             26.7749      12.8500      180      RT9193-33GB                                                                                              
+Y1         ABM3B-8.000MHZ-B2-T TopLayer    OSCSC500X320X110-4N                  16.1813      33.1578      360      "Crystal 8MHz %C2%B120ppm %28Tol%29 %C2%B150ppm %28Stability%29 18pF FUND 200Ohm 4-Pin CSMD T/R"         

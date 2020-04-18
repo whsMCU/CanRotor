@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView20"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="#4A9AA5"
+        android:gravity="center"
+        android:text="세 팅 값"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <SeekBar
+        android:id="@+id/sb_motor3"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:rotation="270"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <SeekBar
+        android:id="@+id/sb_motor2"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:rotation="270"
+        app:layout_constraintStart_toEndOf="@+id/sb_motor3"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/textMOTOR3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="FRONT_L"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MOTOR3" />
+
+    <TextView
+        android:id="@+id/textMOTOR2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="FRONT_R"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/textMOTOR3"
+        app:layout_constraintTop_toBottomOf="@+id/MOTOR2" />
+
+    <TextView
+        android:id="@+id/MOTOR3"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sb_motor3" />
+
+    <TextView
+        android:id="@+id/MOTOR2"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/MOTOR3"
+        app:layout_constraintTop_toBottomOf="@+id/sb_motor2" />
+
+    <SeekBar
+        android:id="@+id/sb_motor1"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:rotation="270"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textMOTOR3" />
+
+    <SeekBar
+        android:id="@+id/sb_motor4"
+        android:layout_width="100dp"
+        android:layout_height="120dp"
+        android:rotation="270"
+        app:layout_constraintStart_toEndOf="@+id/sb_motor1"
+        app:layout_constraintTop_toBottomOf="@+id/textMOTOR2" />
+
+    <TextView
+        android:id="@+id/MOTOR1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sb_motor1" />
+
+    <TextView
+        android:id="@+id/MOTOR4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        app:layout_constraintStart_toEndOf="@+id/MOTOR1"
+        app:layout_constraintTop_toBottomOf="@+id/sb_motor4" />
+
+    <TextView
+        android:id="@+id/textMOTOR1"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="REAR_L"
+        android:textSize="12sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MOTOR1" />
+
+    <TextView
+        android:id="@+id/textMOTOR4"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="REAR_R"
+        android:textSize="12sp"
+        app:layout_constraintStart_toEndOf="@+id/textMOTOR1"
+        app:layout_constraintTop_toBottomOf="@+id/MOTOR4" />
+
+    <RadioGroup
+        android:id="@+id/radio_Group"
+        android:layout_width="100dp"
+        android:layout_height="80dp"
+        app:layout_constraintStart_toEndOf="@+id/sb_motor2"
+        app:layout_constraintTop_toBottomOf="@+id/textView20">
+
+        <RadioButton
+            android:id="@+id/radioButton_Control"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="조종기 조작"
+            android:textSize="10sp" />
+
+        <RadioButton
+            android:id="@+id/radioButton_Manual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="개별 수동 조작"
+            android:textSize="10sp" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/rootLayout"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="#000000"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toEndOf="@+id/sb_motor4"
+        app:layout_constraintTop_toBottomOf="@+id/radio_Group" />
+
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toEndOf="@+id/MOTOR4"
+        app:layout_constraintTop_toBottomOf="@+id/rootLayout" />
+
+</android.support.constraint.ConstraintLayout>
+

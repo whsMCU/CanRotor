@@ -1,0 +1,17 @@
+Added Component: Designator=SWD(MOLEX_0533980571_0533980571(Primary))
+Add component. Clean all parameters for all variants
+Add component (AddParameter): Name = "Availability"; Value = "Unavailable"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MF"; Value = "Molex, LLC"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "MP"; Value = "0533980571"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Package"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Price"; Value = "None"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "SnapEDA_Link"; Value = "https://www.snapeda.com/parts/0533980571/Molex%2C%20LLC/view-part/?ref=snap"; VariantName = "[No Variations]"
+Add component (AddParameter): Name = "Value"; Value = ""; VariantName = "[No Variations]"
+Added Pin To Net: NetName=VCC33 Pin=SWD-1
+Added Pin To Net: NetName=SWCLK Pin=SWD-2
+Added Pin To Net: NetName=GND Pin=SWD-3
+Added Pin To Net: NetName=SWDIO Pin=SWD-4
+Added Pin To Net: NetName=NRST Pin=SWD-5
+Added Pin To Net: NetName=GND Pin=SWD-6
+Added Pin To Net: NetName=GND Pin=SWD-7
+Added Member To Class: ClassName=CanRotor_Mini(1) Member=Component SWD 0533980571

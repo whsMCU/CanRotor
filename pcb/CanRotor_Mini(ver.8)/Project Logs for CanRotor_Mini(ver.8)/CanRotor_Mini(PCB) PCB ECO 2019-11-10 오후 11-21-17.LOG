@@ -1,0 +1,3 @@
+Change Component Footprint: Designator=C26 Old Footprint=6-0805_L New Footprint=6-0805_M
+Change Component Footprint: Designator=C18 Old Footprint=6-0805_L New Footprint=C1206
+Change Component Designator: OldDesignator=I2C NewDesignator=I1

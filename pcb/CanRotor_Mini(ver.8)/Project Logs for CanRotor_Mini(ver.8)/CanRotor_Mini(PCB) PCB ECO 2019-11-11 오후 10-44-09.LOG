@@ -1,0 +1,16 @@
+Removed Pin From Net: NetName=BUZZER Pin=LED-5
+Removed Pin From Net: NetName=GND Pin=LED-7
+Removed Pin From Net: NetName=GND Pin=LED-8
+Removed Pin From Net: NetName=GND Pin=LED-9
+Removed Pin From Net: NetName=GND Pin=LED-10
+Change Component Footprint: Designator=LED Old Footprint=HDR2X5_CEN New Footprint=HDR2X3_CEN
+Change Component Comment : Designator=LED Old Comment=Header 5X2A New Comment=Header 3X2A
+Added Pin To Net: NetName=VCC_5 Pin=LED-2
+Added Pin To Net: NetName=GND Pin=LED-3
+Added Pin To Net: NetName=BUZZER Pin=LED-4
+Added Pin To Net: NetName=MOTOR_LED Pin=LED-1
+Added Pin To Net: NetName=MOTOR_LED Pin=U1-25
+Added Net: Name=MOTOR_LED
+Added Pin To Net: NetName=TEST Pin=LED-5
+Added Pin To Net: NetName=TEST Pin=U1-38
+Added Net: Name=TEST

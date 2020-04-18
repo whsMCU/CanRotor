@@ -1,0 +1,5 @@
+Removed Member From Class: ClassName=CanRotor_Mini(2) Member=C17
+Removed Member From Class: ClassName=CanRotor_Mini(2) Member=R7
+Change Component Footprint: Designator=D2 Old Footprint=SOD-323 New Footprint=1608[0603]
+Added Member To Class: ClassName=CanRotor_Mini(1) Member=Component C17 Cap Semi
+Added Member To Class: ClassName=CanRotor_Mini(2) Member=Component C26 Cap Semi

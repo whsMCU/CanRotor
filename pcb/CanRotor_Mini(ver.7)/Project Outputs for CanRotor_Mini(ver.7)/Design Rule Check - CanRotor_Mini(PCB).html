@@ -1,0 +1,692 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html">
+<style type="text/css">
+		h1, h2, h3, h4, h5, h6 {
+			font-family : segoe ui;
+			color : black;
+			background-color : #EDE7D9;
+			padding: 0.3em;
+		}
+
+		h1 {
+			font-size: 1.2em;
+		}		
+
+		h2 {
+			font-size: 1.2em;
+		}
+
+		body {
+			font-family : segoe ui;
+		}
+
+		td, th {
+			padding: 0.5em;
+			text-align : left;
+			width: 10em;
+		}
+		th {
+			background-color : #EEEEEE;
+
+		}
+		th.column1, td.column1 {
+			text-align: left;
+			width : auto;
+		}
+		table {
+			width : 100%;
+			font-size: 0.9em;
+		}
+
+		.DRC_summary_header {
+			padding-bottom : 0.1em;
+			border : 0px solid black;
+			width: 100%;
+			align: left;
+		}
+
+		.DRC_summary_header_col1,
+		.DRC_summary_header_col2, 
+		.DRC_summary_header_col3 {
+			color : black;
+			font-size:100%;
+			padding : 0em;
+			padding-top : 0.2em;
+			padding-bottom 0.2em;
+			border : 0px solid black;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.DRC_summary_header_col1 {
+			font-weight: bold;
+			width: 8em;
+		}
+
+		.DRC_summary_header_col2 {
+			width: 0.1em;
+		
+		}
+
+		.DRC_summary_header_col3 {
+			width : auto;
+		}
+
+		.header_holder {
+		    Width = 100%;
+		    border = 0px solid green;
+		    padding = 0;
+		}
+
+
+		.front_matter, .front_matter_column1, .front_matter_column2, .front_matter_column3
+		{
+			left : 0;
+			top : 0;
+			padding: 0em;
+			padding-top : 0.1em;
+			border : 0px solid black;
+			width : 100%;
+			vertical-align: top;
+			text-align: left;
+		}
+
+		.front_matter_column1 {
+			width : 8em;
+			font-weight: bold;
+		}
+
+		.front_matter_column2 {
+			width: 0.1em;
+		}
+
+		.front_matter_column3 {
+			width : auto;
+		}
+
+		.total_column1, .total_column {
+			font-weight : bold;
+		}
+		.total_column1 {
+			text-align : left;
+		}
+		.warning, .error {
+			color : red;
+			font-weight : bold;
+		}
+		tr.onmouseout_odd {
+			background-color : #white;
+		}
+		tr.onmouseout_even { 
+			background-color : #FAFAFA;
+		}
+		tr.onmouseover_odd, tr.onmouseover_even { 
+			background-color : #EEEEEE;
+		} 
+		a:link, a:visited, .q a:link,.q a:active,.q {
+			color: #21489e; 
+		}
+		a:link.callback, a:visited.callback { 
+			color: #21489e;
+		}
+		a:link.customize, a:visited.customize {
+			color: #C0C0C0;
+			position: absolute; 
+			right: 10px;
+		}	
+		p.contents_level1 {
+			font-weight : bold;
+			font-size : 110%;
+			margin : 0.5em;
+		}
+		p.contents_level2 {
+			position : relative;
+			left : 20px;
+			margin : 0.5em;
+		}
+	</style><script type="text/javascript">
+		function coordToMils(coord) {
+			var number = coord / 10000;
+			
+			if (number != number.toFixed(3))
+				number = number.toFixed(3);
+
+			return number + 'mil'
+		}
+
+		function coordToMM(coord) {
+			var number = 0.0254 * coord / 10000;
+			
+			if (number != number.toFixed(4))
+				number = number.toFixed(4);
+			
+			return number + 'mm'
+		}
+	
+		function convertCoord(coordNode, units) {
+			for (var i = 0; i < coordNode.childNodes.length; i++) {
+				coordNode.removeChild(coordNode.childNodes[i]);
+			}
+
+			var coord = coordNode.getAttribute('value');
+			if (coord != null) {
+				if (units == 'mm') {
+					textNode = document.createTextNode(coordToMM(coord));
+					coordNode.appendChild(textNode);
+				} else if (units == 'mil') {
+					textNode = document.createTextNode(coordToMils(coord));		
+					coordNode.appendChild(textNode);	
+				}
+			}
+		}
+	
+		function convertUnits(unitNode, units) {
+			for (var i = 0; i < unitNode.childNodes.length; i++) {
+				unitNode.removeChild(unitNode.childNodes[i]);		
+			}
+		
+			textNode = document.createTextNode(units); 
+			unitNode.appendChild(textNode);
+		}
+	
+		function changeUnits(radio_input, units) {
+			if (radio_input.checked) {
+			
+				var elements = document.getElementsByName('coordinate');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertCoord(elements[i], units);
+					}
+				}
+	
+				var elements = document.getElementsByName('units');
+				if (elements) {
+					for (var i = 0; i < elements.length; i++) {
+						convertUnits(elements[i], units);
+					}
+				}
+			}
+		}
+	</script><title>Design Rule Verification Report</title>
+</head>
+<body onload=""><img ALT="Altium" src="
+			file://C:\Users\Public\Documents\Altium\AD18\Templates\AD_logo.png
+		"><h1>Design Rule Verification Report</h1>
+<table class="header_holder">
+<td class="column1">
+<table class="front_matter">
+<tr class="front_matter">
+<td class="front_matter_column1">Date:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">2019-01-06</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">¿ÀÀü 11:11:18</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Elapsed Time:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3">00:00:00</td>
+</tr>
+<tr class="front_matter">
+<td class="front_matter_column1">Filename:</td>
+<td class="front_matter_column2"></td>
+<td class="front_matter_column3"><a href="file:///C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc" class="file"><acronym title="C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc">C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc</acronym></a></td>
+</tr>
+</table>
+</td>
+<td class="column2">
+<table class="DRC_summary_header">
+<tr>
+<td class="DRC_summary_header_col1">Warnings:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3">0</td></tr>
+<tr>
+<td class="DRC_summary_header_col1">Rule Violations:</td>
+<td class="DRC_summary_header_col2"></td>
+<td class="DRC_summary_header_col3" style="color : red">108</td></tr>
+</table>
+</td>
+</table><a name="IDUDPJ1KBMMY2GFSTMXOA3WNGDLJT0LXDC4WX1ZVPRI2SEJO0H4HVD"><h2>Summary</h2></a><table>
+<tr>
+<th class="column1">Warnings</th>
+<th class="column2">Count</th>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">0</td>
+</tr>
+</table><br><table>
+<tr>
+<th class="column1">Rule Violations</th>
+<th class="column2">Count</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDIR0ZGA31FMJQFXNJ40IWFDWQQMOCQP5HD5QXIZCTQ1HQUJFZEZTO">Clearance Constraint (Gap=0.15mm) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDS454GBMWPLKSDXCB3PFKZO4EFCA4D34QDNT3FTBJNMMXN52HAV2N">Clearance Constraint (Gap=0.254mm) (InPolygon),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDPQTHD21GQDETBKFAMVOUNO5CQDLMI51ECKLLW2DMH5HQM3F0G2ZN">Short-Circuit Constraint (Allowed=No) (All),(All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDTKFAIA5AEMKZHHYWCGBVVZTBZBG4CMKHHDHRT4MF3RE2WFJPXCG">Un-Routed Net Constraint ( (All) )</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDS01ZKKNFDEFSPTTPQU2TUK1ELKTKOX4KDQCH3CJJXM41NZZ2CMEJ">Modified Polygon (Allow modified: No), (Allow shelved: No)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDKQKZ3PZP3QSQJBPK53C0AN1YMB2KSV4AJR03HJENMTIOUQEY5PL">Width Constraint (Min=0.15mm) (Max=2mm) (Preferred=0.2mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDTU5OGN2ST0GCFJMXPNMNXR1R0C2AI4JQQCR0RIB4OCHUZ0LHORYP">Width Constraint (Min=0.2mm) (Max=0.5mm) (Preferred=0.3mm) (InNet('VCC33'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZ4CXUL3JZYHRE50LSZL0CTFRW1RIQ3PCD1F5PCZEC5ONP3VTSBK">Width Constraint (Min=0.1mm) (Max=0.5mm) (Preferred=0.3mm) (InNet('GND'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDRF13Z3NXVFYUNBIT2ERQZWSONOFGSYUHZYGP0IBJLUPHTUMZXLUN">Width Constraint (Min=0.5mm) (Max=1mm) (Preferred=0.5mm) (InNet('VBAT'))</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDMREZKB2WQA0WMYI3P0B0TANRQIR3AUPO3Z3MGCVZZBRXB1FEVGP">SMD Neck-Down Constraint (Percent=50%) (All)</a></td>
+<td class="column2">79</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDLRSJA1TIUXYVE5SUOVO40JEKPHLOYSDHJPIG1PLMOSE5PJJJPHHM">Power Plane Connect Rule(Relief Connect )(Expansion=0.508mm) (Conductor Width=0.254mm) (Air Gap=0.254mm) (Entries=4) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDWUA0QXFORSQVN1TLJQ4JK0GTXNAWFXG5SOUJFDGIXYSHVKTQTIVB">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</a></td>
+<td class="column2">8</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#ID0DDKPPBNUTTSOFGXLFY5YXFNSCDVVNM0PGWX1SDJ0AP30KPWZ0GL">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDZVV35VCG3V2LPMMJ10ZSXOKGJD3LKGPVADXHOXVELX4N252OSYI">Minimum Solder Mask Sliver (Gap=0.12mm) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDKDHJJQ4HYOGYEREG34CHCKOEDG51KP3WA0Y4Y2JZ2ME41ACMAKMG">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</a></td>
+<td class="column2">9</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDFHGHS2A01CDFDHZB4KL1BD2CZFE0V0ATRXG42IKSXON400BEBSJ">Silk to Silk (Clearance=0.1mm) (All),(All)</a></td>
+<td class="column2">4</td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="#IDYDYXC4Q4PZNOBPIR3PYT2LUKSE4YT3XORN1LQ1ESD5UJY2KTHIGO">Net Antennae (Tolerance=0mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="#IDQJDWF2LWXQHNE2XFTBB0TUUNQIXUEI5VXZPUJEL1KA5XSNPKDWKI">Height Constraint (Min=0mm) (Max=25.4mm) (Prefered=12.7mm) (All)</a></td>
+<td class="column2">0</td>
+</tr>
+<tr>
+<td style="font-weight : bold; text-align : right" class="column1">Total</td>
+<td style="font-weight : bold" class="column2">108</td>
+</tr>
+</table><br><a name="IDMREZKB2WQA0WMYI3P0B0TANRQIR3AUPO3Z3MGCVZZBRXB1FEVGP"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">SMD Neck-Down Constraint (Percent=50%) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4003.838mil|Location2.X=4088.008mil|Location1.Y=2936.476mil|Location2.Y=2963.726mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4003.838mil|Location2.X=4088.008mil|Location1.Y=2936.476mil|Location2.Y=2963.726mil|Absolute=True">SMD Neck-Down Constraint: Between Pad C13-1(34.55mm,7.55mm) on Top Layer And Track (34.55mm,7.55mm)(34.566mm,7.55mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.161mil|Location2.X=4530.024mil|Location1.Y=3422.696mil|Location2.Y=3468.149mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4421.161mil|Location2.X=4530.024mil|Location1.Y=3422.696mil|Location2.Y=3468.149mil|Absolute=True">SMD Neck-Down Constraint: Between Pad C19-1(45.4mm,20.15mm) on Top Layer And Track (45.4mm,20.15mm)(48.275mm,20.15mm) on Top Layer Relative Track Width: 90.91%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.799mil|Location2.X=4427.97mil|Location1.Y=3103.011mil|Location2.Y=3130.262mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4343.799mil|Location2.X=4427.97mil|Location1.Y=3103.011mil|Location2.Y=3130.262mil|Absolute=True">SMD Neck-Down Constraint: Between Pad C20-1(42.775mm,11.5mm) on Top Layer And Track (43.185mm,11.91mm)(48.412mm,11.91mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3085.53mil|Location2.X=3169.701mil|Location1.Y=2763.247mil|Location2.Y=2790.498mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3085.53mil|Location2.X=3169.701mil|Location1.Y=2763.247mil|Location2.Y=2790.498mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D1-1(11.325mm,3.25mm) on Top Layer And Track (11.225mm,3.15mm)(11.325mm,3.25mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3089.468mil|Location2.X=3173.638mil|Location1.Y=2861.673mil|Location2.Y=2888.923mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3089.468mil|Location2.X=3173.638mil|Location1.Y=2861.673mil|Location2.Y=2888.923mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D1-2(11.325mm,5.65mm) on Top Layer And Track (9.85mm,5.65mm)(11.325mm,5.65mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4176.971mil|Location2.X=4261.141mil|Location1.Y=4511.245mil|Location2.Y=4538.496mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4176.971mil|Location2.X=4261.141mil|Location1.Y=4511.245mil|Location2.Y=4538.496mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D2-1(39mm,47.497mm) on Top Layer And Track (38.948mm,47.549mm)(39mm,47.497mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4179.035mil|Location2.X=4263.205mil|Location1.Y=4414.693mil|Location2.Y=4441.944mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4179.035mil|Location2.X=4263.205mil|Location1.Y=4414.693mil|Location2.Y=4441.944mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D2-2(39mm,45.097mm) on Top Layer And Track (39mm,45.097mm)(39.853mm,45.097mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3084.546mil|Location2.X=3168.717mil|Location1.Y=4382.342mil|Location2.Y=4409.592mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3084.546mil|Location2.X=3168.717mil|Location1.Y=4382.342mil|Location2.Y=4409.592mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D4-1(11.2mm,44.275mm) on Top Layer And Track (10.1mm,44.275mm)(11.2mm,44.275mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3084.546mil|Location2.X=3168.717mil|Location1.Y=4476.83mil|Location2.Y=4504.081mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3084.546mil|Location2.X=3168.717mil|Location1.Y=4476.83mil|Location2.Y=4504.081mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D4-2(11.2mm,46.675mm) on Top Layer And Track (10.2mm,46.675mm)(11.2mm,46.675mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4129.824mil|Location2.X=4213.994mil|Location1.Y=2830.185mil|Location2.Y=2857.436mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4129.824mil|Location2.X=4213.994mil|Location1.Y=2830.185mil|Location2.Y=2857.436mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D5-1(37.75mm,4.85mm) on Top Layer And Track (36.175mm,3.275mm)(37.75mm,4.85mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4129.824mil|Location2.X=4213.994mil|Location1.Y=2735.697mil|Location2.Y=2762.948mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4129.824mil|Location2.X=4213.994mil|Location1.Y=2735.697mil|Location2.Y=2762.948mil|Absolute=True">SMD Neck-Down Constraint: Between Pad D5-2(37.75mm,2.45mm) on Top Layer And Track (37.75mm,2.45mm)(39.375mm,2.45mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3408.972mil|Location2.X=3465.592mil|Location1.Y=3340.545mil|Location2.Y=3355.494mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3408.972mil|Location2.X=3465.592mil|Location1.Y=3340.545mil|Location2.Y=3355.494mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-1(19.29mm,17.663mm) on Top Layer And Track (18.863mm,17.663mm)(19.29mm,17.663mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3409.443mil|Location2.Y=3424.392mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3409.443mil|Location2.Y=3424.392mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-10(21.84mm,19.413mm) on Top Layer And Track (21.84mm,19.413mm)(22.413mm,19.413mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3425.191mil|Location2.Y=3440.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3425.191mil|Location2.Y=3440.14mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-11(21.84mm,19.813mm) on Top Layer And Track (21.84mm,19.813mm)(22.313mm,19.813mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3487.712mil|Location2.X=3544.332mil|Location1.Y=3462.593mil|Location2.Y=3477.543mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3487.712mil|Location2.X=3544.332mil|Location1.Y=3462.593mil|Location2.Y=3477.543mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-13(21.29mm,20.763mm) on Top Layer And Track (21.29mm,20.763mm)(21.29mm,23.215mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3387.318mil|Location2.X=3443.938mil|Location1.Y=3440.939mil|Location2.Y=3455.889mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3387.318mil|Location2.X=3443.938mil|Location1.Y=3440.939mil|Location2.Y=3455.889mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-19(18.74mm,20.213mm) on Top Layer And Track (18.74mm,19.813mm)(18.74mm,20.213mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3387.318mil|Location2.X=3443.938mil|Location1.Y=3425.191mil|Location2.Y=3440.14mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3387.318mil|Location2.X=3443.938mil|Location1.Y=3425.191mil|Location2.Y=3440.14mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-20(18.74mm,19.813mm) on Top Layer And Track (18.74mm,19.813mm)(18.74mm,20.213mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3377.476mil|Location2.X=3434.095mil|Location1.Y=3393.695mil|Location2.Y=3408.644mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3377.476mil|Location2.X=3434.095mil|Location1.Y=3393.695mil|Location2.Y=3408.644mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-22(18.74mm,19.013mm) on Top Layer And Track (18.208mm,19.013mm)(18.74mm,19.013mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3377.476mil|Location2.X=3434.095mil|Location1.Y=3377.947mil|Location2.Y=3392.896mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3377.476mil|Location2.X=3434.095mil|Location1.Y=3377.947mil|Location2.Y=3392.896mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-23(18.74mm,18.613mm) on Top Layer And Track (17.987mm,18.613mm)(18.74mm,18.613mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3377.476mil|Location2.X=3434.095mil|Location1.Y=3362.199mil|Location2.Y=3377.148mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3377.476mil|Location2.X=3434.095mil|Location1.Y=3362.199mil|Location2.Y=3377.148mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-24(18.74mm,18.213mm) on Top Layer And Track (16.588mm,18.213mm)(18.74mm,18.213mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3377.947mil|Location2.Y=3392.896mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3377.947mil|Location2.Y=3392.896mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-8(21.84mm,18.613mm) on Top Layer And Track (21.84mm,18.613mm)(21.84mm,19.013mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3393.695mil|Location2.Y=3408.644mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3509.366mil|Location2.X=3565.986mil|Location1.Y=3393.695mil|Location2.Y=3408.644mil|Absolute=True">SMD Neck-Down Constraint: Between Pad IMU-9(21.84mm,19.013mm) on Top Layer And Track (21.84mm,18.613mm)(21.84mm,19.013mm) on Top Layer Relative Track Width: 100.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2901.452mil|Location2.X=2985.622mil|Location1.Y=2933.848mil|Location2.Y=2961.099mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2901.452mil|Location2.X=2985.622mil|Location1.Y=2933.848mil|Location2.Y=2961.099mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M1-1(5.984mm,6.918mm) on Top Layer And Track (5.984mm,6.918mm)(7.091mm,8.025mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2925.114mil|Location2.X=3009.285mil|Location1.Y=2865.643mil|Location2.Y=2892.894mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2925.114mil|Location2.X=3009.285mil|Location1.Y=2865.643mil|Location2.Y=2892.894mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M1-2(6.868mm,6.034mm) on Top Layer And Track (6.868mm,6.034mm)(9.751mm,3.15mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4354.453mil|Location2.X=4438.624mil|Location1.Y=4316.269mil|Location2.Y=4343.52mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4354.453mil|Location2.X=4438.624mil|Location1.Y=4316.269mil|Location2.Y=4343.52mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M2-1(44.016mm,43.157mm) on Top Layer And Track (42.525mm,42.425mm)(43.284mm,42.425mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.593mil|Location2.X=4414.764mil|Location1.Y=4384.277mil|Location2.Y=4411.527mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4330.593mil|Location2.X=4414.764mil|Location1.Y=4384.277mil|Location2.Y=4411.527mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M2-2(43.132mm,44.041mm) on Top Layer And Track (39.677mm,47.497mm)(43.132mm,44.041mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2925.114mil|Location2.X=3009.285mil|Location1.Y=4382.308mil|Location2.Y=4409.558mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2925.114mil|Location2.X=3009.285mil|Location1.Y=4382.308mil|Location2.Y=4409.558mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M3-1(6.868mm,43.991mm) on Top Layer And Track (6.868mm,43.991mm)(8.001mm,45.125mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2901.452mil|Location2.X=2985.623mil|Location1.Y=4314.104mil|Location2.Y=4341.354mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2901.452mil|Location2.X=2985.623mil|Location1.Y=4314.104mil|Location2.Y=4341.354mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M3-2(5.984mm,43.107mm) on Top Layer And Track (5.984mm,43.107mm)(6.891mm,42.2mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4323.078mil|Location2.X=4431.941mil|Location1.Y=2864.968mil|Location2.Y=2910.42mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4323.078mil|Location2.X=4431.941mil|Location1.Y=2864.968mil|Location2.Y=2910.42mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M4-1(43.132mm,5.984mm) on Top Layer And Track (42.909mm,5.984mm)(43.132mm,5.984mm) on Top Layer Relative Track Width: 125.00%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4354.255mil|Location2.X=4438.426mil|Location1.Y=2931.88mil|Location2.Y=2959.13mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4354.255mil|Location2.X=4438.426mil|Location1.Y=2931.88mil|Location2.Y=2959.13mil|Absolute=True">SMD Neck-Down Constraint: Between Pad M4-2(44.016mm,6.868mm) on Top Layer And Track (43.234mm,7.65mm)(44.016mm,6.868mm) on Top Layer Relative Track Width: 62.50%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4204.626mil|Location2.X=4288.796mil|Location1.Y=3757.666mil|Location2.Y=3784.916mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4204.626mil|Location2.X=4288.796mil|Location1.Y=3757.666mil|Location2.Y=3784.916mil|Absolute=True">SMD Neck-Down Constraint: Between Pad R9-1(39.65mm,28.408mm) on Top Layer And Track (39.65mm,28.408mm)(41.842mm,28.408mm) on Top Layer Relative Track Width: 71.43%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=4040.807mil|Location2.Y=4055.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=4040.807mil|Location2.Y=4055.756mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-1(22.95mm,35.45mm) on Top Layer And Track (21.463mm,36.937mm)(22.95mm,35.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3863.641mil|Location2.Y=3878.59mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3863.641mil|Location2.Y=3878.59mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-10(22.95mm,30.95mm) on Top Layer And Track (21.55mm,30.95mm)(22.95mm,30.95mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=3843.957mil|Location2.Y=3858.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=3843.957mil|Location2.Y=3858.907mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-11(22.95mm,30.45mm) on Top Layer And Track (22.921mm,30.479mm)(22.95mm,30.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=3824.271mil|Location2.Y=3839.22mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=3824.271mil|Location2.Y=3839.22mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-12(22.95mm,29.95mm) on Top Layer And Track (22.95mm,29.95mm)(22.95mm,29.95mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.23mil|Location2.X=3660.85mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.23mil|Location2.X=3660.85mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-13(24.25mm,28.65mm) on Top Layer And Track (23.075mm,28.65mm)(24.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.916mil|Location2.X=3680.536mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.916mil|Location2.X=3680.536mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-14(24.75mm,28.65mm) on Top Layer And Track (24.75mm,28.65mm)(24.75mm,31.078mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.286mil|Location2.X=3719.906mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.286mil|Location2.X=3719.906mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-16(25.75mm,28.65mm) on Top Layer And Track (25.75mm,26.75mm)(25.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3682.97mil|Location2.X=3739.59mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3682.97mil|Location2.X=3739.59mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-17(26.25mm,28.65mm) on Top Layer And Track (26.25mm,26.175mm)(26.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3702.656mil|Location2.X=3759.276mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3702.656mil|Location2.X=3759.276mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-18(26.75mm,28.65mm) on Top Layer And Track (26.75mm,25.725mm)(26.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3722.34mil|Location2.X=3778.96mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3722.34mil|Location2.X=3778.96mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-19(27.25mm,28.65mm) on Top Layer And Track (27.225mm,28.625mm)(27.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3742.026mil|Location2.X=3798.646mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3742.026mil|Location2.X=3798.646mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-20(27.75mm,28.65mm) on Top Layer And Track (27.75mm,28.65mm)(27.75mm,29.975mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.71mil|Location2.X=3818.33mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.71mil|Location2.X=3818.33mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-21(28.25mm,28.65mm) on Top Layer And Track (28.25mm,25mm)(28.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3781.396mil|Location2.X=3838.016mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3781.396mil|Location2.X=3838.016mil|Location1.Y=3773.091mil|Location2.Y=3788.041mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-22(28.75mm,28.65mm) on Top Layer And Track (28.725mm,28.625mm)(28.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3801.08mil|Location2.X=3857.7mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3801.08mil|Location2.X=3857.7mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-23(29.25mm,28.65mm) on Top Layer And Track (29.25mm,27.253mm)(29.25mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3820.766mil|Location2.X=3877.386mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3820.766mil|Location2.X=3877.386mil|Location1.Y=3743.564mil|Location2.Y=3758.513mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-24(29.75mm,28.65mm) on Top Layer And Track (29.75mm,26.3mm)(29.75mm,28.65mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=3843.957mil|Location2.Y=3858.907mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=3843.957mil|Location2.Y=3858.907mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-26(31.05mm,30.45mm) on Top Layer And Track (31.05mm,30.45mm)(32.3mm,30.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.498mil|Location2.X=3894.118mil|Location1.Y=3863.641mil|Location2.Y=3878.59mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3837.498mil|Location2.X=3894.118mil|Location1.Y=3863.641mil|Location2.Y=3878.59mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-27(31.05mm,30.95mm) on Top Layer And Track (29.25mm,30.1mm)(30.1mm,30.95mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=3883.327mil|Location2.Y=3898.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=3883.327mil|Location2.Y=3898.276mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-28(31.05mm,31.45mm) on Top Layer And Track (31.05mm,31.45mm)(32.225mm,31.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3842.419mil|Location2.X=3899.038mil|Location1.Y=3922.697mil|Location2.Y=3937.646mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3842.419mil|Location2.X=3899.038mil|Location1.Y=3922.697mil|Location2.Y=3937.646mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-30(31.05mm,32.45mm) on Top Layer And Track (30.234mm,32.45mm)(31.05mm,32.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=3942.381mil|Location2.Y=3957.331mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=3942.381mil|Location2.Y=3957.331mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-31(31.05mm,32.95mm) on Top Layer And Track (30.95mm,32.85mm)(31.05mm,32.95mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=4001.437mil|Location2.Y=4016.387mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=4001.437mil|Location2.Y=4016.387mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-34(31.05mm,34.45mm) on Top Layer And Track (31.05mm,34.45mm)(36.17mm,34.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=4040.807mil|Location2.Y=4055.756mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3871.946mil|Location2.X=3928.566mil|Location1.Y=4040.807mil|Location2.Y=4055.756mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-36(31.05mm,35.45mm) on Top Layer And Track (31.05mm,35.45mm)(32.725mm,35.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3820.766mil|Location2.X=3877.386mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3820.766mil|Location2.X=3877.386mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-37(29.75mm,36.75mm) on Top Layer And Track (29.75mm,36.75mm)(31.025mm,36.75mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3781.396mil|Location2.X=3838.016mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3781.396mil|Location2.X=3838.016mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-39(28.75mm,36.75mm) on Top Layer And Track (28.75mm,36.75mm)(28.75mm,37.95mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.71mil|Location2.X=3818.33mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3761.71mil|Location2.X=3818.33mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-40(28.25mm,36.75mm) on Top Layer And Track (28.25mm,36.75mm)(28.25mm,38.157mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3722.34mil|Location2.X=3778.96mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3722.34mil|Location2.X=3778.96mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-42(27.25mm,36.75mm) on Top Layer And Track (27.25mm,36.75mm)(27.25mm,36.75mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3702.656mil|Location2.X=3759.276mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3702.656mil|Location2.X=3759.276mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-43(26.75mm,36.75mm) on Top Layer And Track (26.75mm,36.75mm)(26.75mm,36.75mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3682.97mil|Location2.X=3739.59mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3682.97mil|Location2.X=3739.59mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-44(26.25mm,36.75mm) on Top Layer And Track (26.25mm,36.75mm)(26.25mm,38.7mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.286mil|Location2.X=3719.906mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3663.286mil|Location2.X=3719.906mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-45(25.75mm,36.75mm) on Top Layer And Track (25.75mm,36.75mm)(25.75mm,38.025mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3643.6mil|Location2.X=3700.22mil|Location1.Y=4062.459mil|Location2.Y=4077.409mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3643.6mil|Location2.X=3700.22mil|Location1.Y=4062.459mil|Location2.Y=4077.409mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-46(25.25mm,36.75mm) on Top Layer And Track (25.25mm,33.725mm)(25.25mm,36.75mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.916mil|Location2.X=3680.536mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3623.916mil|Location2.X=3680.536mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-47(24.75mm,36.75mm) on Top Layer And Track (24.7mm,36.8mm)(24.75mm,36.75mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.23mil|Location2.X=3660.85mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3604.23mil|Location2.X=3660.85mil|Location1.Y=4091.987mil|Location2.Y=4106.936mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-48(24.25mm,36.75mm) on Top Layer And Track (23.201mm,37.799mm)(24.25mm,36.75mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3962.067mil|Location2.Y=3977.017mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3962.067mil|Location2.Y=3977.017mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-5(22.95mm,33.45mm) on Top Layer And Track (21.525mm,33.45mm)(22.95mm,33.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3942.381mil|Location2.Y=3957.331mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3942.381mil|Location2.Y=3957.331mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-6(22.95mm,32.95mm) on Top Layer And Track (21.125mm,32.95mm)(22.95mm,32.95mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3922.697mil|Location2.Y=3937.646mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3523.523mil|Location2.X=3580.142mil|Location1.Y=3922.697mil|Location2.Y=3937.646mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-7(22.95mm,32.45mm) on Top Layer And Track (21.6mm,32.45mm)(22.95mm,32.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=3883.327mil|Location2.Y=3898.276mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3553.05mil|Location2.X=3609.67mil|Location1.Y=3883.327mil|Location2.Y=3898.276mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U1-9(22.95mm,31.45mm) on Top Layer And Track (22.85mm,31.35mm)(22.95mm,31.45mm) on Top Layer Relative Track Width: 66.67%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3775.995mil|Location2.X=3841.765mil|Location1.Y=3402.814mil|Location2.Y=3421.294mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3775.995mil|Location2.X=3841.765mil|Location1.Y=3402.814mil|Location2.Y=3421.294mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U2-8(28.663mm,19.295mm) on Top Layer And Track (28.663mm,17.212mm)(28.663mm,19.295mm) on Top Layer Relative Track Width: 53.69%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.783mil|Location2.X=3135.552mil|Location1.Y=3453.208mil|Location2.Y=3471.688mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.783mil|Location2.X=3135.552mil|Location1.Y=3453.208mil|Location2.Y=3471.688mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U3-1(10.725mm,20.575mm) on Top Layer And Track (10.725mm,20.575mm)(10.725mm,21.825mm) on Top Layer Relative Track Width: 56.60%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.783mil|Location2.X=3135.552mil|Location1.Y=3502.42mil|Location2.Y=3520.9mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3069.783mil|Location2.X=3135.552mil|Location1.Y=3502.42mil|Location2.Y=3520.9mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U3-2(10.725mm,21.825mm) on Top Layer And Track (10.725mm,20.575mm)(10.725mm,21.825mm) on Top Layer Relative Track Width: 56.60%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3773.522mil|Location2.X=3839.292mil|Location1.Y=3111.674mil|Location2.Y=3130.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3773.522mil|Location2.X=3839.292mil|Location1.Y=3111.674mil|Location2.Y=3130.153mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U4-1(27.975mm,11.9mm) on Top Layer And Track (28.7mm,11.9mm)(29.225mm,12.425mm) on Top Layer Relative Track Width: 54.55%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.505mil|Location2.X=3840.275mil|Location1.Y=3186.478mil|Location2.Y=3204.957mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3774.505mil|Location2.X=3840.275mil|Location1.Y=3186.478mil|Location2.Y=3204.957mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U4-3(27.975mm,13.8mm) on Top Layer And Track (28.75mm,13.8mm)(29.625mm,13.8mm) on Top Layer Relative Track Width: 54.55%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3654.426mil|Location2.X=3720.196mil|Location1.Y=3186.478mil|Location2.Y=3204.957mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3654.426mil|Location2.X=3720.196mil|Location1.Y=3186.478mil|Location2.Y=3204.957mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U4-4(25.575mm,13.8mm) on Top Layer And Track (23.35mm,13.8mm)(25.575mm,13.8mm) on Top Layer Relative Track Width: 54.55%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3654.426mil|Location2.X=3720.196mil|Location1.Y=3111.674mil|Location2.Y=3130.153mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3654.426mil|Location2.X=3720.196mil|Location1.Y=3111.674mil|Location2.Y=3130.153mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U4-5(25.575mm,11.9mm) on Top Layer And Track (25.575mm,4.081mm)(25.575mm,11.9mm) on Top Layer Relative Track Width: 54.55%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3707.854mil|Location2.X=3773.623mil|Location1.Y=2984.302mil|Location2.Y=3002.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3707.854mil|Location2.X=3773.623mil|Location1.Y=2984.302mil|Location2.Y=3002.782mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U5-1(26.932mm,8.665mm) on Top Layer And Track (26.932mm,8.665mm)(26.932mm,10.043mm) on Top Layer Relative Track Width: 59.06%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3707.854mil|Location2.X=3773.623mil|Location1.Y=2910.302mil|Location2.Y=2928.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3707.854mil|Location2.X=3773.623mil|Location1.Y=2910.302mil|Location2.Y=2928.782mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U5-3(26.932mm,6.785mm) on Top Layer And Track (26.932mm,6.785mm)(27.735mm,6.785mm) on Top Layer Relative Track Width: 59.06%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.916mil|Location2.X=3878.087mil|Location1.Y=2906.365mil|Location2.Y=2933.616mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.916mil|Location2.X=3878.087mil|Location1.Y=2906.365mil|Location2.Y=2933.616mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U5-4(29.218mm,6.785mm) on Top Layer And Track (29.218mm,6.785mm)(30.335mm,6.785mm) on Top Layer Relative Track Width: 98.43%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3776.476mil|Location2.X=3842.245mil|Location1.Y=2947.302mil|Location2.Y=2965.782mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3776.476mil|Location2.X=3842.245mil|Location1.Y=2947.302mil|Location2.Y=2965.782mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U5-5(29.218mm,7.725mm) on Top Layer And Track (28.675mm,7.725mm)(29.218mm,7.725mm) on Top Layer Relative Track Width: 59.06%</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.916mil|Location2.X=3878.087mil|Location1.Y=2980.365mil|Location2.Y=3007.616mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3793.916mil|Location2.X=3878.087mil|Location1.Y=2980.365mil|Location2.Y=3007.616mil|Absolute=True">SMD Neck-Down Constraint: Between Pad U5-6(29.218mm,8.665mm) on Top Layer And Track (29.218mm,8.665mm)(31.562mm,8.665mm) on Top Layer Relative Track Width: 98.43%</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDWUA0QXFORSQVN1TLJQ4JK0GTXNAWFXG5SOUJFDGIXYSHVKTQTIVB"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole Size Constraint (Min=0.025mm) (Max=2.54mm) (All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-1(12.25mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-2(12.25mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-3(37.75mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=4078.116mil|Location2.Y=4197.476mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-4(37.75mm,37.75mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-5(12.25mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3078.548mil|Location2.X=3197.908mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-6(12.25mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-7(37.75mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4082.486mil|Location2.X=4201.846mil|Location1.Y=3074.178mil|Location2.Y=3193.538mil|Absolute=True">Hole Size Constraint: (3mm &gt; 2.54mm) Pad Free-8(37.75mm,12.25mm) on Multi-Layer Actual Slot Hole Width = 3mm</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="ID0DDKPPBNUTTSOFGXLFY5YXFNSCDVVNM0PGWX1SDJ0AP30KPWZ0GL"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Hole To Hole Clearance (Gap=0.254mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3134.395mil|Location2.X=3142.061mil|Location1.Y=4133.963mil|Location2.Y=4141.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3134.395mil|Location2.X=3142.061mil|Location1.Y=4133.963mil|Location2.Y=4141.629mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 0.254mm) Between Pad Free-1(12.25mm,37.75mm) on Multi-Layer And Pad Free-2(12.25mm,37.75mm) on Multi-Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.333mil|Location2.X=4145.999mil|Location1.Y=4133.963mil|Location2.Y=4141.629mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.333mil|Location2.X=4145.999mil|Location1.Y=4133.963mil|Location2.Y=4141.629mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 0.254mm) Between Pad Free-3(37.75mm,37.75mm) on Multi-Layer And Pad Free-4(37.75mm,37.75mm) on Multi-Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3134.395mil|Location2.X=3142.061mil|Location1.Y=3130.025mil|Location2.Y=3137.691mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3134.395mil|Location2.X=3142.061mil|Location1.Y=3130.025mil|Location2.Y=3137.691mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 0.254mm) Between Pad Free-5(12.25mm,12.25mm) on Multi-Layer And Pad Free-6(12.25mm,12.25mm) on Multi-Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.333mil|Location2.X=4145.999mil|Location1.Y=3130.025mil|Location2.Y=3137.691mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4138.333mil|Location2.X=4145.999mil|Location1.Y=3130.025mil|Location2.Y=3137.691mil|Absolute=True">Hole To Hole Clearance Constraint: (Collision &lt; 0.254mm) Between Pad Free-7(37.75mm,12.25mm) on Multi-Layer And Pad Free-8(37.75mm,12.25mm) on Multi-Layer Pad/Via Touching Holes</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDZVV35VCG3V2LPMMJ10ZSXOKGJD3LKGPVADXHOXVELX4N252OSYI"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Minimum Solder Mask Sliver (Gap=0.12mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.516mil|Location2.X=3413.863mil|Location1.Y=3359.743mil|Location2.Y=3367.161mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.516mil|Location2.X=3413.863mil|Location1.Y=3359.743mil|Location2.Y=3367.161mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.021mm &lt; 0.12mm) Between Pad IMU-1(19.29mm,17.663mm) on Top Layer And Pad IMU-24(18.74mm,18.213mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3497.068mil|Location2.X=3504.415mil|Location1.Y=3450.294mil|Location2.Y=3457.713mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3497.068mil|Location2.X=3504.415mil|Location1.Y=3450.294mil|Location2.Y=3457.713mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.021mm &lt; 0.12mm) Between Pad IMU-12(21.84mm,20.213mm) on Top Layer And Pad IMU-13(21.29mm,20.763mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.516mil|Location2.X=3413.934mil|Location1.Y=3448.922mil|Location2.Y=3456.269mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3406.516mil|Location2.X=3413.934mil|Location1.Y=3448.922mil|Location2.Y=3456.269mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.021mm &lt; 0.12mm) Between Pad IMU-18(19.29mm,20.763mm) on Top Layer And Pad IMU-19(18.74mm,20.213mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3497.068mil|Location2.X=3504.486mil|Location1.Y=3358.37mil|Location2.Y=3365.717mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3497.068mil|Location2.X=3504.486mil|Location1.Y=3358.37mil|Location2.Y=3365.717mil|Absolute=True">Minimum Solder Mask Sliver Constraint: (0.021mm &lt; 0.12mm) Between Pad IMU-6(21.29mm,17.663mm) on Top Layer And Pad IMU-7(21.84mm,18.213mm) on Top Layer [Top Solder] Mask Sliver [0.021mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDKDHJJQ4HYOGYEREG34CHCKOEDG51KP3WA0Y4Y2JZ2ME41ACMAKMG"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk To Solder Mask (Clearance=0.1mm) (IsPad),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3096.96mil|Location2.X=3102.147mil|Location1.Y=2755.956mil|Location2.Y=2761.143mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3096.96mil|Location2.X=3102.147mil|Location1.Y=2755.956mil|Location2.Y=2761.143mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.066mm &lt; 0.1mm) Between Pad D1-1(11.325mm,3.25mm) on Top Layer And Text "D1" (10.868mm,1.758mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.066mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3079.329mil|Location2.X=3082.953mil|Location1.Y=4507.045mil|Location2.Y=4510.67mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3079.329mil|Location2.X=3082.953mil|Location1.Y=4507.045mil|Location2.Y=4510.67mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad D4-2(11.2mm,46.675mm) on Top Layer And Text "D4" (10.463mm,47.253mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3355.065mil|Location2.X=3358.689mil|Location1.Y=4513.897mil|Location2.Y=4517.522mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3355.065mil|Location2.X=3358.689mil|Location1.Y=4513.897mil|Location2.Y=4517.522mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (Collision &lt; 0.1mm) Between Pad R15-2(18.034mm,46.999mm) on Top Layer And Text "Q3" (16.471mm,46.769mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.23mil|Location2.X=4495.417mil|Location1.Y=3732.642mil|Location2.Y=3737.829mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.23mil|Location2.X=4495.417mil|Location1.Y=3732.642mil|Location2.Y=3737.829mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.087mm &lt; 0.1mm) Between Pad SWD-6(48.2mm,27.975mm) on Top Layer And Track (45.6mm,27.525mm)(46.55mm,27.525mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.087mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.23mil|Location2.X=4495.417mil|Location1.Y=4165.713mil|Location2.Y=4170.9mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4490.23mil|Location2.X=4495.417mil|Location1.Y=4165.713mil|Location2.Y=4170.9mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.087mm &lt; 0.1mm) Between Pad SWD-7(48.2mm,38.075mm) on Top Layer And Track (45.6mm,38.525mm)(46.55mm,38.525mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.087mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3728.054mil|Location2.X=3735.749mil|Location1.Y=3104.899mil|Location2.Y=3111.555mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3728.054mil|Location2.X=3735.749mil|Location1.Y=3104.899mil|Location2.Y=3111.555mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.016mm &lt; 0.1mm) Between Pad U4-1(27.975mm,11.9mm) on Top Layer And Track (26.275mm,11.55mm)(27.275mm,11.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3728.054mil|Location2.X=3735.717mil|Location1.Y=3203.407mil|Location2.Y=3210.158mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3728.054mil|Location2.X=3735.717mil|Location1.Y=3203.407mil|Location2.Y=3210.158mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.016mm &lt; 0.1mm) Between Pad U4-3(27.975mm,13.8mm) on Top Layer And Track (26.275mm,14.15mm)(27.275mm,14.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.909mil|Location2.X=3694.606mil|Location1.Y=3201.938mil|Location2.Y=3208.594mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.909mil|Location2.X=3694.606mil|Location1.Y=3201.938mil|Location2.Y=3208.594mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.016mm &lt; 0.1mm) Between Pad U4-4(25.575mm,13.8mm) on Top Layer And Track (26.275mm,14.15mm)(27.275mm,14.15mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.909mil|Location2.X=3694.574mil|Location1.Y=3106.368mil|Location2.Y=3113.119mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3686.909mil|Location2.X=3694.574mil|Location1.Y=3106.368mil|Location2.Y=3113.119mil|Absolute=True">Silk To Solder Mask Clearance Constraint: (0.016mm &lt; 0.1mm) Between Pad U4-5(25.575mm,11.9mm) on Top Layer And Track (26.275mm,11.55mm)(27.275mm,11.55mm) on Top Overlay [Top Overlay] to [Top Solder] clearance [0.016mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br><a name="IDFHGHS2A01CDFDHZB4KL1BD2CZFE0V0ATRXG42IKSXON400BEBSJ"><table>
+<tr>
+<th style="text-align : left" colspan="1" class="rule">Silk to Silk (Clearance=0.1mm) (All),(All)</th>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2873.165mil|Location2.X=2878.352mil|Location1.Y=4181.224mil|Location2.Y=4186.411mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2873.165mil|Location2.X=2878.352mil|Location1.Y=4181.224mil|Location2.Y=4186.411mil|Absolute=True">Silk To Silk Clearance Constraint: (0.058mm &lt; 0.1mm) Between Text "I2C" (5.45mm,39.075mm) on Top Overlay And Track (5.18mm,38.79mm)(7.72mm,38.79mm) on Top Overlay Silk Text to Silk Clearance [0.058mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3349.325mil|Location2.X=3354.512mil|Location1.Y=4483.455mil|Location2.Y=4488.642mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=3349.325mil|Location2.X=3354.512mil|Location1.Y=4483.455mil|Location2.Y=4488.642mil|Absolute=True">Silk To Silk Clearance Constraint: (0.093mm &lt; 0.1mm) Between Text "Q3" (16.471mm,46.769mm) on Top Overlay And Track (17.684mm,46.049mm)(17.684mm,46.449mm) on Top Overlay Silk Text to Silk Clearance [0.093mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_odd" onmouseover="className = 'onmouseover_odd'" onmouseout="className = 'onmouseout_odd'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2852.463mil|Location2.X=2857.65mil|Location1.Y=3802.524mil|Location2.Y=3807.711mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=2852.463mil|Location2.X=2857.65mil|Location1.Y=3802.524mil|Location2.Y=3807.711mil|Absolute=True">Silk To Silk Clearance Constraint: (0.045mm &lt; 0.1mm) Between Text "RX" (3.575mm,29.3mm) on Top Overlay And Track (5.18mm,28.63mm)(5.18mm,38.79mm) on Top Overlay Silk Text to Silk Clearance [0.045mm]</acronym></a><br></td>
+</tr>
+<tr class="onmouseout_even" onmouseover="className = 'onmouseover_even'" onmouseout="className = 'onmouseout_even'">
+<td class="column1"><a href="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4262.896mil|Location2.X=4268.083mil|Location1.Y=3820.24mil|Location2.Y=3825.427mil|Absolute=True" class="callback"><acronym title="dxpprocess://PCB:Zoom?document=C:\Users\Public\Documents\Altium\Projects\workspace\CanRotor_Mini(ver.7)\CanRotor_Mini(PCB).PcbDoc;viewname=PCBEditor;Action=AREA_DYNAMICZOOM|Location1.X=4262.896mil|Location2.X=4268.083mil|Location1.Y=3820.24mil|Location2.Y=3825.427mil|Absolute=True">Silk To Silk Clearance Constraint: (0.095mm &lt; 0.1mm) Between Text "RX" (39.375mm,29.75mm) on Top Overlay And Track (41.03mm,29.13mm)(41.03mm,39.29mm) on Top Overlay Silk Text to Silk Clearance [0.095mm]</acronym></a><br></td>
+</tr>
+</table></a><hr color="#EEEEEE"><a href="#top" style="font-size: 0.9em">Back to top</a><br><br></body>
+</html>
