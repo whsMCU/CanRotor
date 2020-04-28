@@ -500,7 +500,7 @@ void SerialCom(void) {
       for(uint8_t axis=0; axis<3;axis++){
         tele.acc[axis]  = (int16_t) imu.accSmooth[axis];//map(imu.accADC[axis], -32768, 32768, -1000, 1000);
         tele.gyro[axis] = (int16_t) imu.gyroRaw[axis];
-        tele.mag[axis]  = (int16_t) imu.magRaw[axis];
+        tele.mag[axis]  = (int16_t) imu.magSmooth[axis];
       }
       tele.a     = GPS.fixquality;
       tele.b     = GPS.satellites;
