@@ -458,7 +458,7 @@ void MAG_Common(void){
     imu.magRaw[axis] = (float)imu.magADC[axis] * mRes * magCalibration[axis] - magBias[axis];
     if (mag_lpf_factor > 0) {
       magLPF[axis] = magLPF[axis] * (1.0f - (1.0f / mag_lpf_factor)) + imu.magRaw[axis] * (1.0f / mag_lpf_factor);
-        imu.magSmooth[axis] = magLPF[axis];
+      imu.magSmooth[axis] = magLPF[axis];
     }
   }
 }
