@@ -341,7 +341,7 @@ void Gyro_getADC(void){
 void GYRO_Common(void){
   uint8_t axis =0;
   for(axis=0; axis<3; axis++){
-    imu.gyroRaw[axis] = -((float)imu.gyroADC[axis] - imu.gyro_cal[axis]) * gRes;// - gyroBias[axis];
+    imu.gyroRaw[axis] = ((float)imu.gyroADC[axis] - imu.gyro_cal[axis]) * gRes;// - gyroBias[axis];
 
     if(abs(imu.gyroRaw[axis]) <= 5){
         imu.gyroRaw[axis] = 0;
