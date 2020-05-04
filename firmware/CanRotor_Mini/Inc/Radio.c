@@ -208,7 +208,7 @@ void computeRC(void)
 		 if(f.ANGLE_MODE || f.HORIZON_MODE){
 		   RC.rcCommand[ROLL]     = map(zofs(RC.rcADC[ROLL], 1500, 20), 1100, 1900, -30, 30)+ MSP_TRIM[ROLL]; //0~250 left:0, right:250
 		   RC.rcCommand[PITCH]    = -map(zofs(RC.rcADC[PITCH], 1500, 20), 1100, 1900, -30, 30)+ MSP_TRIM[PITCH]; //0~250 rear:0, fornt:250
-		   RC.rcCommand[YAW]      = -map(zofs(RC.rcADC[YAW], 1500, 20), 1100, 1900, -30, 30); //0~250 left:0, right:250
+		   RC.rcCommand[YAW]      = -map(zofs(RC.rcADC[YAW], 1500, 20), 1100, 1900, -90, 90); //0~250 left:0, right:250
 		 }else if(f.ACRO_MODE){
 		   RC.rcCommand[ROLL]     = map(zofs(RC.rcADC[ROLL], 1500, 20), 1100, 1900, -150, 150)+ MSP_TRIM[ROLL];
 		   RC.rcCommand[PITCH]    = -map(zofs(RC.rcADC[PITCH], 1500, 20), 1100, 1900, -150, 150)+ MSP_TRIM[PITCH];
