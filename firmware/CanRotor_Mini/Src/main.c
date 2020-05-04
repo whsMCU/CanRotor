@@ -151,7 +151,7 @@ int main(void){
 
   Calibrate_gyro();
  #ifdef DEVO7_Recive
-  RC_Init();
+  //RC_Init();
  #endif
   mixerInit();
 

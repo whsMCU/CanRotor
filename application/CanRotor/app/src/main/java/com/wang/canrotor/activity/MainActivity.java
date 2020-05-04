@@ -612,7 +612,6 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
         public void run() {
             while (true) {
                 try {
-
                     Log.d("Thread_wang", "Main SendThread"+mThread.getName());
 
                     Bundle setup_bundle = new Bundle();

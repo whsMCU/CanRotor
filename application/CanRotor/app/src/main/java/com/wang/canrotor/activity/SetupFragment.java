@@ -20,6 +20,7 @@ import com.wang.canrotor.opengl.MyGLSurfaceView;
 
 public class SetupFragment extends Fragment {
     setupshowThread showThread;
+    Thread t;
     private TextView mot_1, mot_2, mot_3, mot_4;
     private SeekBar sb_mot_1, sb_mot_2, sb_mot_3, sb_mot_4;
     private RadioGroup selectMode_MotorControl;
@@ -120,7 +121,7 @@ public class SetupFragment extends Fragment {
         });
         moterListener();
         motThread mot_Thread = new motThread();
-        Thread t = new Thread(mot_Thread);
+        t = new Thread(mot_Thread);
         t.start();
 
         running = true;
