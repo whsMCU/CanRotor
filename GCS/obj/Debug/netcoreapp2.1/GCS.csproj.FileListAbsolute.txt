@@ -1,0 +1,11 @@
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\bin\Debug\netcoreapp2.1\GCS.deps.json
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\bin\Debug\netcoreapp2.1\GCS.runtimeconfig.json
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\bin\Debug\netcoreapp2.1\GCS.runtimeconfig.dev.json
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\bin\Debug\netcoreapp2.1\GCS.dll
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\bin\Debug\netcoreapp2.1\GCS.pdb
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\obj\Debug\netcoreapp2.1\GCS.csprojAssemblyReference.cache
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\obj\Debug\netcoreapp2.1\GCS.csproj.CoreCompileInputs.cache
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\obj\Debug\netcoreapp2.1\GCS.AssemblyInfoInputs.cache
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\obj\Debug\netcoreapp2.1\GCS.AssemblyInfo.cs
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\obj\Debug\netcoreapp2.1\GCS.dll
+C:\Users\WANG\Desktop\Project\CanRotor\GCS\obj\Debug\netcoreapp2.1\GCS.pdb

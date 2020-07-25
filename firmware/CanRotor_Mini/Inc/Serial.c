@@ -711,7 +711,7 @@ void SerialCom(void) {
 
         debug_t.angle[ROLL] = imu.AHRS[ROLL]*10;
         debug_t.angle[PITCH] = imu.AHRS[PITCH]*10;
-        debug_t.mag_heading = imu.actual_compass_heading*10;
+        debug_t.mag_heading = (int16_t)imu.actual_compass_heading*10;
 
         debug_t.motor[0] = motor[0];
         debug_t.motor[1] = motor[1];
