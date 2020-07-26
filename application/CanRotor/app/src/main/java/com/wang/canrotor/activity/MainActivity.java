@@ -45,7 +45,8 @@ import static com.wang.canrotor.library.MspProtocol.TELEMERY_PID_SAVE;
 
 public class MainActivity extends AppCompatActivity implements PidFragment.PidFragmentListener, SetupFragment.SetupFragmentListener {
     MyThread mThread;
-
+    long start = 0;
+    long end = 0;
     public boolean msp_request = false;
     /*
      * Notifications from UsbService will be received here.
@@ -464,6 +465,9 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
 //                    }
 
                     mspProtocol.SerialCom(data);
+                    start = System.currentTimeMillis();
+                    Log.w("Period_Time", (start - end)+"ms");
+                    end = System.currentTimeMillis();
 
                     state_CycleTime.setText(Integer.toString(mspProtocol.cycleTime));
                     Log.d("WANG_D", "값이 왜 멈춰는거야? "+Integer.toString(mspProtocol.cycleTime));
@@ -597,7 +601,7 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                                 usbService.write(data);
                             }
                         }
-                        Thread.sleep(50);
+                        Thread.sleep(1000);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

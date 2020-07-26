@@ -51,6 +51,7 @@ public class UsbService extends Service {
     private UsbDevice device;
     private UsbDeviceConnection connection;
     private UsbSerialDevice serialPort;
+    private int a=0;
 
     private boolean serialPortConnected;
     /*
@@ -71,7 +72,7 @@ public class UsbService extends Service {
                 if (mHandler != null) {
                     //mHandler.obtainMessage(MESSAGE_FROM_SERIAL_PORT, data).sendToTarget();
                     mHandler.obtainMessage(MESSAGE_FROM_SERIAL_PORT, arg0).sendToTarget();
-                    Log.d("WANG_D", "여기 값 받는곳!!");
+                    Log.d("WANG_D", "여기 값 받는곳!!"+arg0.length+" "+a++);
                 }
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
