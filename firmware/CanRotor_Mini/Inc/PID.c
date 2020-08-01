@@ -219,6 +219,7 @@ void Control(void)
         if(pid.output2[axis] > OUT_MAX) pid.output2[axis] = OUT_MAX;
         if(pid.output2[axis] < -OUT_MAX) pid.output2[axis] = -OUT_MAX;
         }
+
         error = RC.rcCommand[YAW] - (-imu.gyroRaw[YAW]);
         pid.Iterm2[YAW] += error * pid.ts;
         if(pid.Iterm2[YAW] > pid.i2_limit[YAW]) pid.Iterm2[YAW] = pid.i2_limit[YAW];

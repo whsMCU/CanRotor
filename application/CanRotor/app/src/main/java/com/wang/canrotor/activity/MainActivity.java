@@ -470,7 +470,7 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                     end = System.currentTimeMillis();
 
                     state_CycleTime.setText(Integer.toString(mspProtocol.cycleTime));
-                    Log.d("WANG_D", "값이 왜 멈춰는거야? "+Integer.toString(mspProtocol.cycleTime));
+                    //Log.d("WANG_D", "값이 왜 멈춰는거야? "+Integer.toString(mspProtocol.cycleTime));
                     tlemetry_Error.setText(Integer.toString(mspProtocol.error_count));
 
                     if (mspProtocol.ARMED == 1) {
@@ -516,6 +516,11 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                     attitude_bundle.putFloat("attitude_roll", mspProtocol.ROLL);
                     attitude_bundle.putFloat("attitude_pitch", mspProtocol.PITCH);
                     attitudeFragment.setArguments(attitude_bundle);
+
+                    Bundle attitude_bundle_chart = new Bundle();
+                    attitude_bundle_chart.putFloat("attitude_roll", mspProtocol.ROLL);
+                    attitude_bundle_chart.putFloat("attitude_pitch", mspProtocol.PITCH);
+                    chartFragment.setArguments(attitude_bundle_chart);
 
                     radio_THR.setText(Integer.toString(mspProtocol.RCchan[mspProtocol.RCThro]));
                     radio_ROLL.setText(Integer.toString(mspProtocol.RCchan[mspProtocol.RCRoll]));
@@ -601,7 +606,7 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                                 usbService.write(data);
                             }
                         }
-                        Thread.sleep(1000);
+                        Thread.sleep(100);
                     }
                 } catch (InterruptedException e) {
                     e.printStackTrace();

@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.Description;
+import com.github.mikephil.charting.components.Legend;
 import com.github.mikephil.charting.components.XAxis;
 import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.Entry;
@@ -33,6 +35,7 @@ public class ChartFragment extends Fragment {
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_chart, container, false);
 
         mpLineChart = (LineChart) rootView.findViewById(R.id.line_chart);
+        Description des = mpLineChart.getDescription();
 
 //        LineDataSet lineDataSet1 = new LineDataSet(dataValues1(), "Data Set 1");
 //        ArrayList<ILineDataSet> dataSets = new ArrayList<>();
@@ -42,11 +45,27 @@ public class ChartFragment extends Fragment {
 //        LineData data = new LineData(dataSets);
 //        mpLineChart.setData(data);
 //        mpLineChart.invalidate();
+        des.setEnabled(true);
+        des.setText("Real_Time Data");
+        des.setTextSize(15f);
+        des.setTextColor(Color.WHITE);
+        mpLineChart.setTouchEnabled(true);
+        mpLineChart.setDragEnabled(true);
+        mpLineChart.setScaleEnabled(true);
+        mpLineChart.setDrawGridBackground(true);
+
+        // if disabled, scaling can be done on x- and y-axis separately
+        mpLineChart.setPinchZoom(true);
+
+        // set an alternative background color
+        mpLineChart.setBackgroundColor(Color.LTGRAY);
 
         XAxis xAxis = mpLineChart.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(10f);
         xAxis.setDrawGridLines(false);
+        xAxis.setAvoidFirstLastClipping(true);
+        xAxis.setEnabled(true);
 
         YAxis leftAxis = mpLineChart.getAxisLeft();
         leftAxis.setDrawGridLines(false);
@@ -55,6 +74,7 @@ public class ChartFragment extends Fragment {
         rightAxis.setEnabled(false);
         
         LineData data = new LineData();
+        data.setValueTextColor(Color.CYAN);
         mpLineChart.setData(data);
         
         feedMultiple();
@@ -70,12 +90,18 @@ public class ChartFragment extends Fragment {
                 set = createSet();
                 data.addDataSet(set);
             }
-            data.addEntry(new Entry(set.getEntryCount(), (float)(Math.random() * 40) + 30f), 0);
+            Bundle bundle = getArguments();
+            if (bundle != null) {
+            //data.addEntry(new Entry(set.getEntryCount(), (float)(Math.random() * 40) + 30f), 0);
+            data.addEntry(new Entry(set.getEntryCount(), (float)bundle.getFloat("attitude_roll"),0), 0);
+            //data.addEntry(new Entry(set.getEntryCount(), (float)bundle.getFloat("attitude_pitch"),0), 1);
             data.notifyDataChanged();
+            }
 
             mpLineChart.notifyDataSetChanged();
-            mpLineChart.setVisibleXRangeMaximum(10);
+            mpLineChart.setVisibleXRangeMaximum(100);
             mpLineChart.moveViewToX(data.getEntryCount());
+
         }
     }
 
@@ -85,7 +111,7 @@ public class ChartFragment extends Fragment {
         set.setColor(ColorTemplate.getHoloBlue());
         set.setCircleColor(Color.WHITE);
         set.setLineWidth(2f);
-        set.setCircleRadius(4f);
+        set.setCircleRadius(1f);
         set.setFillAlpha(65);
         set.setFillColor(ColorTemplate.getHoloBlue());
         set.setHighLightColor(Color.rgb(244,177,177));
