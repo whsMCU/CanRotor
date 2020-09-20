@@ -123,14 +123,14 @@ void PIDControlInit(pidc_t *pid)
 	pid->output2[YAW] = 0.0f;
 }
 
-int16_t  magHold,headFreeModeHold, yawheadinghold; // [-180;+180]
+int16_t  magHold, headFreeModeHold; //[-180;+180]
 
 void Control(void)
 {
 	dt_recip = 1/pid.ts;
 	if(!f.ARMED){
 	  headFreeModeHold = imu.actual_compass_heading;
-	  yawheadinghold = imu.actual_compass_heading;
+	  imu.yawheadinghold = imu.actual_compass_heading;
 	}
 
 #if defined(HEADFREE)
@@ -231,8 +231,11 @@ void Control(void)
 
         if(pid.output2[YAW] > OUT_MAX) pid.output2[YAW] = OUT_MAX;
         if(pid.output2[YAW] < -OUT_MAX) pid.output2[YAW] = -OUT_MAX;
+
 //        if(RC.rcCommand[YAW]>-5 && RC.rcCommand[YAW]<5){
-//          error = yawheadinghold - imu.actual_compass_heading;
+//          error = imu.yawheadinghold - imu.actual_compass_heading;
+//          if(error > 180) error -= 360;
+//          if(error < -180) error += 360;
 //          pid.Iterm2[YAW] += error * pid.ts;
 //          if(pid.Iterm2[YAW] > pid.i2_limit[YAW]) pid.Iterm2[YAW] = pid.i2_limit[YAW];
 //          else if(pid.Iterm2[YAW] < -pid.i2_limit[YAW]) pid.Iterm2[YAW] = -pid.i2_limit[YAW];
@@ -244,7 +247,7 @@ void Control(void)
 //          if(pid.output2[YAW] > OUT_MAX) pid.output2[YAW] = OUT_MAX;
 //          if(pid.output2[YAW] < -OUT_MAX) pid.output2[YAW] = -OUT_MAX;
 //        }else{
-//          error = RC.rcCommand[YAW] - imu.gyroRaw[YAW];
+//          error = RC.rcCommand[YAW] - (-imu.gyroRaw[YAW]);
 //          pid.Iterm2[YAW] += error * pid.ts;
 //          if(pid.Iterm2[YAW] > pid.i2_limit[YAW]) pid.Iterm2[YAW] = pid.i2_limit[YAW];
 //          else if(pid.Iterm2[YAW] < -pid.i2_limit[YAW]) pid.Iterm2[YAW] = -pid.i2_limit[YAW];
@@ -255,7 +258,7 @@ void Control(void)
 //
 //          if(pid.output2[YAW] > OUT_MAX) pid.output2[YAW] = OUT_MAX;
 //          if(pid.output2[YAW] < -OUT_MAX) pid.output2[YAW] = -OUT_MAX;
-//          yawheadinghold = imu.actual_compass_heading;
+//          imu.yawheadinghold = imu.actual_compass_heading;
 //        }
   }else if(f.ACRO_MODE){
         pid.error[ROLL] = RC.rcCommand[ROLL] - imu.gyroRaw[ROLL];

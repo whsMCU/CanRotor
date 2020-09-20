@@ -27,6 +27,7 @@ typedef struct {
   float compass_x_horizontal;
   float compass_y_horizontal;
   int32_t actual_compass_heading;
+  int16_t yawheadinghold;
 	
 } imu_t;
 
