@@ -472,6 +472,7 @@ void SerialCom(void) {
         int16_t e;
         uint16_t f;
         int16_t motor[4];//74
+        int16_t debug[4];//82
       } tele;
       tele.roll     = RC.rcCommand[ROLL];
       tele.pitch    = RC.rcCommand[PITCH];
@@ -512,7 +513,11 @@ void SerialCom(void) {
       tele.motor[1] = motor[1];
       tele.motor[2] = motor[2];
       tele.motor[3] = motor[3];
-      s_struct((uint8_t*)&tele,78);
+      tele.debug[0] = imu.actual_compass_heading;
+      tele.debug[1] = imu.yawheadinghold;
+      tele.debug[2] = imu.debug1;
+      tele.debug[3] = imu.debug2;
+      s_struct((uint8_t*)&tele, 86);
       break;
      }
 

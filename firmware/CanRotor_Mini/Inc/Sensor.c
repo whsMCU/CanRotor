@@ -478,13 +478,13 @@ void CAL_Heading(void){
   if (head < 0)
       head += 360;
   imu.actual_compass_heading = head;
-
-  h_sum += imu.actual_compass_heading;
-  h_sum -= heading[ind];
-  heading[ind++] = imu.actual_compass_heading;
-  ind %= HEADING_SMOOTH;
-  imu.actual_compass_heading = h_sum/HEADING_SMOOTH;
-
+  if(0){
+    h_sum += imu.actual_compass_heading;
+    h_sum -= heading[ind];
+    heading[ind++] = imu.actual_compass_heading;
+    ind %= HEADING_SMOOTH;
+    imu.actual_compass_heading = h_sum/HEADING_SMOOTH;
+  }
   att.mag_heading = (int16_t) imu.actual_compass_heading;
 }
 

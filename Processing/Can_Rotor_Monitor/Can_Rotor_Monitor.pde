@@ -57,8 +57,8 @@ int mot[] = new int[4],
 
 int satellites, latitudeDegrees, longitudeDegrees;
 
-float gx, gy, gz, ax, ay, az, magx, magy, magz, head, angx, angy,
-      angyLevelControl, angCalc;
+float gx, gy, gz, ax, ay, az, magx, magy, magz, head, angx, angy, debug1, debug2, debug3, debug4;
+float angyLevelControl, angCalc;
 
 int alt;
 
@@ -74,7 +74,8 @@ cDataArray accPITCH   = new cDataArray(200), accROLL    = new cDataArray(200), a
            gyroPITCH  = new cDataArray(200), gyroROLL   = new cDataArray(200), gyroYAW    = new cDataArray(200),
            magxData   = new cDataArray(200), magyData   = new cDataArray(200), magzData   = new cDataArray(200),
            imuPITCH   = new cDataArray(200), imuROLL    = new cDataArray(200), imuYAW     = new cDataArray(200),
-           altData    = new cDataArray(200), headData   = new cDataArray(200);
+           altData    = new cDataArray(200), headData   = new cDataArray(200),
+           debug1Data = new cDataArray(200), debug2Data = new cDataArray(200), debug3Data = new cDataArray(200),debug4Data = new cDataArray(200);
 
 Numberbox confP[]   = new Numberbox[PIDITEMS],
           confI[]   = new Numberbox[PIDITEMS],
@@ -93,7 +94,7 @@ Numberbox confP[]   = new Numberbox[PIDITEMS],
           ;
           
 Slider axSlider, aySlider, azSlider, gxSlider, gySlider, gzSlider, magxSlider, magySlider,
-       magzSlider, altSlider, headSlider;          
+       magzSlider, altSlider, headSlider, debug1Slider, debug2Slider, debug3Slider, debug4Slider;          
 
 Slider headingSlider, rollSlider, pitchSlider, yawSlider, scaleSlider;
 Slider motSlider[]        = new Slider[5],
@@ -168,6 +169,10 @@ controlP5 = new ControlP5(this);
   controlP5.addTextlabel("magyawlabel","   YAW",xo,y5+30).setFont(font9);
   controlP5.addTextlabel("altitudelabel","ALT",xo,y3 -4).setFont(font12);
   controlP5.addTextlabel("headlabel","HEAD",xo,y4 -4).setFont(font12);
+  controlP5.addTextlabel("debug1","debug1",x+90,y6).setFont(font12);
+  controlP5.addTextlabel("debug2","debug2",x+210,y6).setFont(font12);
+  controlP5.addTextlabel("debug3","debug3",x+330,y6).setFont(font12);
+  controlP5.addTextlabel("debug4","debug4",x+450,y6).setFont(font12);
   
   axSlider      =  controlP5.addSlider("axSlider",-1000,+1000,0,x+20,y1+10,50,10).setDecimalPrecision(0).setLabel("");
   aySlider      =    controlP5.addSlider("aySlider",-1000,+1000,0,x+20,y1+20,50,10).setDecimalPrecision(0).setLabel("");
@@ -180,6 +185,10 @@ controlP5 = new ControlP5(this);
   magxSlider    =    controlP5.addSlider("magxSlider",-5000,+5000,0,x+20,y5+10,50,10).setDecimalPrecision(0).setLabel("");
   magySlider    =    controlP5.addSlider("magySlider",-5000,+5000,0,x+20,y5+20,50,10).setDecimalPrecision(0).setLabel("");
   magzSlider    =    controlP5.addSlider("magzSlider",-5000,+5000,0,x+20,y5+30,50,10).setDecimalPrecision(0).setLabel("");
+  debug1Slider  =    controlP5.addSlider("debug1Slider",-32768,+32767,0,x+130,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug2Slider  =    controlP5.addSlider("debug2Slider",-32768,+32767,0,x+250,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug3Slider  =    controlP5.addSlider("debug3Slider",-32768,+32767,0,x+370,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug4Slider  =    controlP5.addSlider("debug4Slider",-32768,+32767,0,x+490,y6,50,10).setDecimalPrecision(0).setLabel("");
 
 g_graph  = new cGraph(xGraph+110,yGraph, 480, 200);
 headingSlider  = controlP5.addSlider("heading", 0, 360, 0, 450+50, 170, 10, 100).setLabel("Heading").setDecimalPrecision(0);
@@ -593,7 +602,7 @@ if((time-time6)>20){
   magxData.addVal(magx);magyData.addVal(magy);magzData.addVal(magz);
   imuROLL.addVal(roll);imuPITCH.addVal(pitch);imuYAW.addVal(yaw);
   altData.addVal(alt);headData.addVal(heading);
-  //debug1Data.addVal(debug1);debug2Data.addVal(debug2);debug3Data.addVal(debug3);debug4Data.addVal(debug4);
+  debug1Data.addVal(debug1);debug2Data.addVal(debug2);debug3Data.addVal(debug3);debug4Data.addVal(debug4);
 
 }
 
@@ -832,6 +841,7 @@ yawSlider.setValue(yaw);
 // Graph
 axSlider.setValue(ax);aySlider.setValue(ay);azSlider.setValue(az);gxSlider.setValue(gx);gySlider.setValue(gy);gzSlider.setValue(gz);
 altSlider.setValue(alt);headSlider.setValue(heading);magxSlider.setValue(magx);magySlider.setValue(magy);magzSlider.setValue(magz);
+debug1Slider.setValue(debug1);debug2Slider.setValue(debug2);debug3Slider.setValue(debug3);debug4Slider.setValue(debug4);
 
   stroke(255);
   a=radians(roll);
@@ -1130,10 +1140,10 @@ altSlider.setValue(alt);headSlider.setValue(heading);magxSlider.setValue(magx);m
   stroke(100, 50, 150); if (magyGraph) g_graph.drawLine(magyData, -1000, +1000);
   stroke(150, 100, 50); if (magzGraph) g_graph.drawLine(magzData, -1000, +1000);
 
-  //stroke(200, 50, 0); if (debug1Graph)  g_graph.drawLine(debug1Data, -5000, +5000);
-  //stroke(0, 200, 50); if (debug2Graph)  g_graph.drawLine(debug2Data, -5000, +5000);
-  //stroke(50, 0, 200); if (debug3Graph)  g_graph.drawLine(debug3Data, -5000, +5000);
-  //stroke(0, 0, 0);    if (debug4Graph)  g_graph.drawLine(debug4Data, -5000, +5000);
+  stroke(200, 50, 0); if (debug1Graph)  g_graph.drawLine(debug1Data, -5000, +5000);
+  stroke(0, 200, 50); if (debug2Graph)  g_graph.drawLine(debug2Data, -5000, +5000);
+  stroke(50, 0, 200); if (debug3Graph)  g_graph.drawLine(debug3Data, -5000, +5000);
+  stroke(0, 0, 0);    if (debug4Graph)  g_graph.drawLine(debug4Data, -5000, +5000);
   
 }
 
