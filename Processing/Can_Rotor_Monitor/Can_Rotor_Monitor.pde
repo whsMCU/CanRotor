@@ -55,7 +55,8 @@ float roll, pitch, yaw, heading, kp[], ki[], kd[], kp_dual_outer[], ki_dual_oute
 int mot[] = new int[4],
     RCChan[] = new int[16];
 
-int satellites, latitudeDegrees, longitudeDegrees;
+int satellites;
+float latitudeDegrees, longitudeDegrees;
 
 float gx, gy, gz, ax, ay, az, magx, magy, magz, head, angx, angy, debug1, debug2, debug3, debug4;
 float angyLevelControl, angCalc;
@@ -152,6 +153,10 @@ controlP5 = new ControlP5(this);
   tMAGX   =         controlP5.addToggle("MAGX",true,x,y5+10,20,10).setColorActive(color(50, 100, 150)).setColorBackground(black).setLabel(""); 
   tMAGY   =         controlP5.addToggle("MAGY",true,x,y5+20,20,10).setColorActive(color(100, 50, 150)).setColorBackground(black).setLabel(""); 
   tMAGZ   =         controlP5.addToggle("MAGZ",true,x,y5+30,20,10).setColorActive(color(150, 100, 50)).setColorBackground(black).setLabel(""); 
+  tDEBUG1 =         controlP5.addToggle("DEBUG1",true,x+70,y6,20,10) .setColorActive(color(200, 50, 0)).setColorBackground(black).setLabel("").setValue(0);
+  tDEBUG2 =         controlP5.addToggle("DEBUG2",true,x+190,y6,20,10).setColorActive(color(0, 200, 50)).setColorBackground(black).setLabel("").setValue(0);
+  tDEBUG3 =         controlP5.addToggle("DEBUG3",true,x+310,y6,20,10).setColorActive(color(50, 0, 200)).setColorBackground(black).setLabel("").setValue(0);
+  tDEBUG4 =         controlP5.addToggle("DEBUG4",true,x+430,y6,20,10).setColorActive(color(150, 100, 50)).setColorBackground(black).setLabel("").setValue(0);
 
   controlP5.addTextlabel( "alarmLabel", "Alarm:", xGraph -5, yGraph -32).setFont(font12);
 
@@ -169,10 +174,10 @@ controlP5 = new ControlP5(this);
   controlP5.addTextlabel("magyawlabel","   YAW",xo,y5+30).setFont(font9);
   controlP5.addTextlabel("altitudelabel","ALT",xo,y3 -4).setFont(font12);
   controlP5.addTextlabel("headlabel","HEAD",xo,y4 -4).setFont(font12);
-  controlP5.addTextlabel("debug1","debug1",x+90,y6).setFont(font12);
-  controlP5.addTextlabel("debug2","debug2",x+210,y6).setFont(font12);
-  controlP5.addTextlabel("debug3","debug3",x+330,y6).setFont(font12);
-  controlP5.addTextlabel("debug4","debug4",x+450,y6).setFont(font12);
+  controlP5.addTextlabel("debug1","debug1",x+88,y6-5).setFont(font12);
+  controlP5.addTextlabel("debug2","debug2",x+208,y6-5).setFont(font12);
+  controlP5.addTextlabel("debug3","debug3",x+328,y6-5).setFont(font12);
+  controlP5.addTextlabel("debug4","debug4",x+448,y6-5).setFont(font12);
   
   axSlider      =  controlP5.addSlider("axSlider",-1000,+1000,0,x+20,y1+10,50,10).setDecimalPrecision(0).setLabel("");
   aySlider      =    controlP5.addSlider("aySlider",-1000,+1000,0,x+20,y1+20,50,10).setDecimalPrecision(0).setLabel("");
@@ -185,10 +190,10 @@ controlP5 = new ControlP5(this);
   magxSlider    =    controlP5.addSlider("magxSlider",-5000,+5000,0,x+20,y5+10,50,10).setDecimalPrecision(0).setLabel("");
   magySlider    =    controlP5.addSlider("magySlider",-5000,+5000,0,x+20,y5+20,50,10).setDecimalPrecision(0).setLabel("");
   magzSlider    =    controlP5.addSlider("magzSlider",-5000,+5000,0,x+20,y5+30,50,10).setDecimalPrecision(0).setLabel("");
-  debug1Slider  =    controlP5.addSlider("debug1Slider",-32768,+32767,0,x+130,y6,50,10).setDecimalPrecision(0).setLabel("");
-  debug2Slider  =    controlP5.addSlider("debug2Slider",-32768,+32767,0,x+250,y6,50,10).setDecimalPrecision(0).setLabel("");
-  debug3Slider  =    controlP5.addSlider("debug3Slider",-32768,+32767,0,x+370,y6,50,10).setDecimalPrecision(0).setLabel("");
-  debug4Slider  =    controlP5.addSlider("debug4Slider",-32768,+32767,0,x+490,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug1Slider  =    controlP5.addSlider("debug1Slider",-32768,+32767,0,x+135,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug2Slider  =    controlP5.addSlider("debug2Slider",-32768,+32767,0,x+255,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug3Slider  =    controlP5.addSlider("debug3Slider",-32768,+32767,0,x+375,y6,50,10).setDecimalPrecision(0).setLabel("");
+  debug4Slider  =    controlP5.addSlider("debug4Slider",-32768,+32767,0,x+495,y6,50,10).setDecimalPrecision(0).setLabel("");
 
 g_graph  = new cGraph(xGraph+110,yGraph, 480, 200);
 headingSlider  = controlP5.addSlider("heading", 0, 360, 0, 450+50, 170, 10, 100).setLabel("Heading").setDecimalPrecision(0);
@@ -575,6 +580,10 @@ public void evaluateCommand(byte cmd, int dataSize) {
         motSlider[2].setValue(mot[2]).show();
         motSlider[3].setValue(mot[3]).show();
         }
+        debug1 = read16();
+        debug2 = read16();
+        debug3 = read16();
+        debug4 = read16();
         //println("Mot[0] : " + mot[0]+", Mot[1] : " + mot[1]+", Mot[2] : " + mot[2]+", Mot[3] : " + mot[3]);
         println("com_time : "+ (millis()-com_time));
         com_time= millis();
@@ -764,9 +773,9 @@ if (toggleMotor & (time-time5)>20) {
   // GPS DATA
   fill(255, 255, 255);
   text("GPS",xGPS,yGPS);
-  text(GPS_altitude,xGPS+50,yGPS+15);
-  text(latitudeDegrees,xGPS+50,yGPS+30);
-  text(longitudeDegrees,xGPS+50,yGPS+45);
+  text(GPS_altitude,xGPS+30,yGPS+15);
+  text(latitudeDegrees,xGPS+30,yGPS+30);
+  text(longitudeDegrees,xGPS+30,yGPS+45);
   text(GPS_speed,xGPS+50,yGPS+60);
   text(satellites,xGPS+50,yGPS+75);
   text(0,xGPS+65,yGPS+90);

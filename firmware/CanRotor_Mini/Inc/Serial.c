@@ -358,7 +358,7 @@ void SerialCom(void) {
       currentPortState->c_state = IDLE;
     }
     #ifdef GPS_Recive
-    if(i == UART2){
+    if(i == UART1){
       static uint32_t GPS_last_frame_seen; //Last gps frame seen at this time, used to detect stalled gps communication
       if (GPS_newFrame(c)){
 

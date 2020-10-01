@@ -28,19 +28,19 @@ void USART2_TX_str(char *str){while(*str){USART2_TX(*str++);}}
 
 void gps_Init(void)
 {
-  huart2.Init.BaudRate = 9600;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
+  huart1.Init.BaudRate = 9600;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
   }
-  HAL_UART_Transmit_IT(&huart2, (uint8_t*)Disable_GPGSV, 11);
+  HAL_UART_Transmit_IT(&huart1, (uint8_t*)Disable_GPGSV, 11);
   HAL_Delay(350);
-  HAL_UART_Transmit_IT(&huart2, (uint8_t*)Set_to_5Hz, 14);
+  HAL_UART_Transmit_IT(&huart1, (uint8_t*)Set_to_5Hz, 14);
   HAL_Delay(350);
-  HAL_UART_Transmit_IT(&huart2, (uint8_t*)Set_to_57kbps, 28);
+  HAL_UART_Transmit_IT(&huart1, (uint8_t*)Set_to_57kbps, 28);
   HAL_Delay(350);
-  huart2.Init.BaudRate = 57600;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
+  huart1.Init.BaudRate = 57600;
+  if (HAL_UART_Init(&huart1) != HAL_OK)
   {
     Error_Handler();
   }
