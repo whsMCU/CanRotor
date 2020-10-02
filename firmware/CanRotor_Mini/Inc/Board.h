@@ -69,6 +69,18 @@ extern alt_t alt;
 extern test_t test;
 extern att_t att;
 
+extern debug_t Debug_var;
+
+extern int16_t  GPS_angle[2];
+extern int32_t  GPS_coord[2];
+
+extern uint8_t NAV_state;
+extern uint8_t NAV_error;
+extern uint8_t prv_gps_modes;
+
+extern int16_t  nav[2];
+extern int16_t  nav_rated[2];
+
 extern uint8_t telemetry_loop_counter;
 extern int16_t overrun_count;
 extern uint16_t time, time1, aftertime;

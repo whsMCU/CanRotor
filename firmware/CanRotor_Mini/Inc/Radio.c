@@ -116,6 +116,7 @@ void mwArm(void)
 		f.ARMED = 1;
 //		f.Tuning_MODE = 0;
 		ms5611.ground_pressure = alt.EstAlt;
+		GPS_reset_home_position();
 	}
 }
 void mwDisarm(void)
@@ -188,24 +189,27 @@ void computeRC(void)
          }
         }
 	    if(RC.rcCommand[AUX1] > 1800){
-	      f.ANGLE_MODE = 1;
-	      f.HORIZON_MODE = 0;
-	      f.ACRO_MODE = 0;
-	    }else if(RC.rcCommand[AUX1] > 1400 && RC.rcCommand[AUX1] < 1600){
-	      f.HORIZON_MODE = 1;
 	      f.ANGLE_MODE = 0;
-	      f.ACRO_MODE = 0;
-	    }else {
+	      f.HORIZON_MODE = 0;
 	      f.ACRO_MODE = 1;
+	      f.GPS_HOLD_MODE = 0;
+	    }else if(RC.rcCommand[AUX1] > 1400 && RC.rcCommand[AUX1] < 1600){
+	      f.HORIZON_MODE = 0;
+	      f.ANGLE_MODE = 1;
+	      f.ACRO_MODE = 0;
+	      f.GPS_HOLD_MODE = 0;
+	    }else {
+	      f.ACRO_MODE = 0;
 	      f.ANGLE_MODE = 0;
 	      f.HORIZON_MODE = 0;
+	      f.GPS_HOLD_MODE = 1;
 	    }
 
 	    if(RC.rcCommand[GEAR] > 1400 && RC.rcCommand[GEAR] < 1600 && f.ARMED == 1){
 	      Error.error = 5;
 	    }
 
-		 if(f.ANGLE_MODE || f.HORIZON_MODE){
+		 if(f.ANGLE_MODE || f.GPS_HOLD_MODE){
 		   RC.rcCommand[ROLL]     = map(zofs(RC.rcADC[ROLL], 1500, 20), 1100, 1900, -30, 30)+ MSP_TRIM[ROLL]; //0~250 left:0, right:250
 		   RC.rcCommand[PITCH]    = -map(zofs(RC.rcADC[PITCH], 1500, 20), 1100, 1900, -30, 30)+ MSP_TRIM[PITCH]; //0~250 rear:0, fornt:250
 		   RC.rcCommand[YAW]      = -map(zofs(RC.rcADC[YAW], 1500, 20), 1100, 1900, -90, 90); //0~250 left:0, right:250

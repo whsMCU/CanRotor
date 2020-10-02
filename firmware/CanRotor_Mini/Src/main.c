@@ -79,6 +79,7 @@ DMA_HandleTypeDef hdma_usart2_rx;
 
 bat_t BAT;
 eeror_t Error;
+debug_t Debug_var;
 
 int Flight_Status = 0;
 
@@ -158,6 +159,7 @@ int main(void){
    QueueCreate(UART1);
    QueueCreate(UART2);
    PIDControlInit(&pid);
+   GPS_set_pids();
    EEPROM_Init();
  ///////////////////////////////////////////////////
  #ifdef SSD1306
@@ -212,6 +214,9 @@ int main(void){
       computeRC(); //2us~10us
     #endif
     computeIMU(); //1050~1500us
+    #ifdef GPS_Recive
+    GPS_mode_check();
+    #endif
     static uint8_t taskOrder = 0;
     switch (taskOrder){ //4~206us
       case 0: //200us
@@ -223,7 +228,7 @@ int main(void){
       case 2:
         taskOrder++;
         #ifdef GPS_Recive
-          //if (GPS_Compute() != 0) break;
+          if (GPS_Compute() != 0) break;
             break;
         #endif
       case 3:

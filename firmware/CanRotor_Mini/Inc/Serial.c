@@ -228,7 +228,7 @@ void PrintData(uint8_t command)
 
 	case 3:
 	  sprintf(Buf, "latDeg : %d, lonDeg : %d, satle : %d, quality : %d, G_C : %d, altitude : %.2dM\n",
-	          GPS.latitudeDegrees, GPS.longitudeDegrees, GPS.satellites, GPS.fixquality, GPS.GPS_ground_course, GPS.altitude);
+	          GPS.GPS_coord[LAT], GPS.GPS_coord[LON], GPS.satellites, GPS.fixquality, GPS.GPS_ground_course, GPS.altitude);
 //	  sprintf(Buf, "  H: %2d, min : %2d, sec : %2d, mil : %3d, speed : %.2f, update : %d, Error : %d\n",
 //	          GPS.hour, GPS.minute, GPS.seconds, GPS.milliseconds, GPS.speed, GPS.GPS_update, Error.error);
     //sprintf(Buf, "latDeg : %f, lonDeg : %f \r\n", GPS.latitudeDegrees, GPS.longitudeDegrees);
@@ -485,9 +485,9 @@ void SerialCom(void) {
       tele.error        = Error.error;
       if(f.ARMED) tmp |= 1<<BOXARM;
       if(f.HEADFREE_MODE) tmp |= 1<<BOXHEADFREE;
-      if(f.ANGLE_MODE) tmp |= 1<<BOXANGLE_MODE;
-      if(f.HORIZON_MODE) tmp |= 1<<BOXHORIZON_MODE;
       if(f.ACRO_MODE) tmp |= 1<<BOXACRO_MODE;
+      if(f.ANGLE_MODE) tmp |= 1<<BOXANGLE_MODE;
+      if(f.GPS_HOLD_MODE) tmp |= 1<<BOXGPS_MODE;
       if(f.CALIBRATE_ACC) tmp |= 1<<BOXCALIBRATE_ACC;
       if(f.CALIBRATE_MAG) tmp |= 1<<BOXCALIBRATE_MAG;
       tele.flag         = tmp;
@@ -505,18 +505,18 @@ void SerialCom(void) {
       }
       tele.a     = GPS.fixquality;
       tele.b     = GPS.satellites;
-      tele.c     = GPS.latitudeDegrees;
-      tele.d     = GPS.longitudeDegrees;
+      tele.c     = GPS.GPS_coord[LAT];
+      tele.d     = GPS.GPS_coord[LON];
       tele.e     = GPS.altitude;
       tele.f     = GPS.speed;
       tele.motor[0] = motor[0];
       tele.motor[1] = motor[1];
       tele.motor[2] = motor[2];
       tele.motor[3] = motor[3];
-      tele.debug[0] = imu.actual_compass_heading;
-      tele.debug[1] = imu.yawheadinghold;
-      tele.debug[2] = imu.debug1;
-      tele.debug[3] = imu.debug2;
+      tele.debug[0] = Debug_var.Debug[0];
+      tele.debug[1] = Debug_var.Debug[1];
+      tele.debug[2] = Debug_var.Debug[2];
+      tele.debug[3] = Debug_var.Debug[3];
       s_struct((uint8_t*)&tele, 86);
       break;
      }
@@ -545,8 +545,8 @@ void SerialCom(void) {
 	      } msp_raw_gps;
 	      msp_raw_gps.a     = GPS.fixquality;
 	      msp_raw_gps.b     = GPS.satellites;
-	      msp_raw_gps.c     = GPS.latitudeDegrees;
-	      msp_raw_gps.d     = GPS.longitudeDegrees;
+	      msp_raw_gps.c     = GPS.GPS_coord[LAT];
+	      msp_raw_gps.d     = GPS.GPS_coord[LON];
 //	      msp_raw_gps.e     = GPS_altitude;
 //	      msp_raw_gps.f     = GPS_speed;
 //	      msp_raw_gps.g     = GPS_ground_course;
@@ -704,9 +704,9 @@ void SerialCom(void) {
         debug_t.error        = Error.error;
         if(f.ARMED) tmp |= 1<<BOXARM;
         if(f.HEADFREE_MODE) tmp |= 1<<BOXHEADFREE;
-        if(f.ANGLE_MODE) tmp |= 1<<BOXANGLE_MODE;
-        if(f.HORIZON_MODE) tmp |= 1<<BOXHORIZON_MODE;
         if(f.ACRO_MODE) tmp |= 1<<BOXACRO_MODE;
+        if(f.ANGLE_MODE) tmp |= 1<<BOXANGLE_MODE;
+        if(f.GPS_HOLD_MODE) tmp |= 1<<BOXGPS_MODE;
         if(f.CALIBRATE_ACC) tmp |= 1<<BOXCALIBRATE_ACC;
         if(f.CALIBRATE_MAG) tmp |= 1<<BOXCALIBRATE_MAG;
         debug_t.flag         = tmp;

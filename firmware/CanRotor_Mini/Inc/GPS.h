@@ -22,8 +22,7 @@ typedef struct gps_t {
 
   uint16_t milliseconds;
 
-  int32_t latitudeDegrees;
-  int32_t longitudeDegrees;
+  int32_t GPS_coord[2];
 
   uint16_t altitude;
 
@@ -40,11 +39,51 @@ typedef struct gps_t {
 
 } gps_t;
 
+#define LAT  0
+#define LON  1
+
+#define __X 1
+#define __Y 0
+
+#define RADX100                    0.000174532925
+
+// default POSHOLD control gains
+#define POSHOLD_P              .15
+#define POSHOLD_I              0.0
+#define POSHOLD_IMAX           20        // degrees
+
+#define POSHOLD_RATE_P         3.4
+#define POSHOLD_RATE_I         0.14      // Wind control
+#define POSHOLD_RATE_D         0.053     // try 2 or 3 for POSHOLD_RATE 1
+#define POSHOLD_RATE_IMAX      20        // degrees
+
+// default Navigation PID gains
+#define NAV_P                  2.5
+#define NAV_I                  0.33      // Wind control
+#define NAV_D                  0.083      //
+#define NAV_IMAX               20        // degrees
+
+// Maximum allowable banking than navigation outputs
+#define NAV_BANK_MAX 3000                 //(**)
+
+#define sq(x) ((x)*(x))
+
 void USART2_TX(unsigned char data);
 
 void USART2_TX_str(char *str);
 
 void gps_Init(void);
+void GPS_set_pids(void);
+void GPS_mode_check(void);
+uint8_t GPS_Compute(void);
+void GPS_reset_home_position(void);
+void GPS_bearing(int32_t* lat1, int32_t* lon1, int32_t* lat2, int32_t* lon2, int32_t* bearing);
+static void GPS_distance_cm(int32_t* lat1, int32_t* lon1, int32_t* lat2, int32_t* lon2,uint32_t* dist);
+static void GPS_calc_velocity(void);
+static void GPS_calc_location_error( int32_t* target_lat, int32_t* target_lng, int32_t* gps_lat, int32_t* gps_lng );
+static void GPS_calc_poshold(void);
+void GPS_calc_longitude_scaling(int32_t lat);
+void GPS_set_next_wp(int32_t* lat_to, int32_t* lon_to, int32_t* lat_from, int32_t* lon_from);
 
 //Function prototypes for GPS frame parsing
 bool GPS_newFrame(uint8_t c);

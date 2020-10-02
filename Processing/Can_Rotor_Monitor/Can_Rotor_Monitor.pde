@@ -38,7 +38,7 @@ int horizonInstrSize, GPS_distanceToHome, GPS_directionToHome,
 
 int error_count;
 
-int error, ARMED, HEADFREE_MODE, ANGLE_MODE, HORIZON_MODE, ACRO_MODE, cycleTime, VBAT, Temperature, EstAlt, graph_on;
+int error, ARMED, HEADFREE_MODE, ANGLE_MODE, HORIZON_MODE, ACRO_MODE, GPS_HOLD_MODE, cycleTime, VBAT, Temperature, EstAlt, graph_on;
 
 int hours, minutes, seconds;
 
@@ -533,19 +533,19 @@ public void evaluateCommand(byte cmd, int dataSize) {
             HEADFREE_MODE = 0;
           }
           if((mode&(1<<2))>0){
+             ACRO_MODE = 1;
+           }else{
+             ACRO_MODE = 0;
+           } 
+          if((mode&(1<<3))>0){
              ANGLE_MODE = 1;
            }else{
              ANGLE_MODE = 0;
            } 
-          if((mode&(1<<3))>0){
-             HORIZON_MODE = 1;
-           }else{
-             HORIZON_MODE = 0;
-           } 
            if((mode&(1<<4))>0){
-             ACRO_MODE = 1;
+             GPS_HOLD_MODE = 1;
            }else{
-             ACRO_MODE = 0;
+              GPS_HOLD_MODE = 0;
            }
            if((mode&(1<<5))>0){
              buttonCALIBRATE_ACC.setColorBackground(green_);
@@ -827,12 +827,12 @@ if (toggleMotor & (time-time5)>20) {
   }else{
     text("NO", 80, 130);
   }
-  if(ANGLE_MODE == 1){
-      text("ANGLE", 60, 170);
-  }else if(HORIZON_MODE == 1){
-      text("HORIZON", 60, 170);
-  }else if(ACRO_MODE == 1){
+  if(ACRO_MODE == 1){
       text("ACRO", 60, 170);
+  }else if(ANGLE_MODE == 1){
+      text("ANGLE", 60, 170);
+  }else if(GPS_HOLD_MODE == 1){
+      text("GPS", 60, 170);
   }
   
   text(minutes+":"+seconds, 95, 190);
