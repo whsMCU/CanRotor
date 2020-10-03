@@ -39,6 +39,13 @@ typedef struct gps_t {
 
 } gps_t;
 
+typedef struct PID_PARAM_ {
+  float kP;
+  float kI;
+  float kD;
+  float Imax;
+  } PID_PARAM;
+
 #define LAT  0
 #define LON  1
 
@@ -46,22 +53,6 @@ typedef struct gps_t {
 #define __Y 0
 
 #define RADX100                    0.000174532925
-
-// default POSHOLD control gains
-#define POSHOLD_P              .15
-#define POSHOLD_I              0.0
-#define POSHOLD_IMAX           20        // degrees
-
-#define POSHOLD_RATE_P         3.4
-#define POSHOLD_RATE_I         0.14      // Wind control
-#define POSHOLD_RATE_D         0.053     // try 2 or 3 for POSHOLD_RATE 1
-#define POSHOLD_RATE_IMAX      20        // degrees
-
-// default Navigation PID gains
-#define NAV_P                  2.5
-#define NAV_I                  0.33      // Wind control
-#define NAV_D                  0.083      //
-#define NAV_IMAX               20        // degrees
 
 // Maximum allowable banking than navigation outputs
 #define NAV_BANK_MAX 3000                 //(**)

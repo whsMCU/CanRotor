@@ -38,12 +38,7 @@ uint16_t GPS_speed;                                   // GPS speed         - uni
 uint8_t  GPS_update = 0;                              // a binary toogle to distinct a GPS position update
 uint16_t GPS_ground_course = 0;                       //                   - unit: degree*10
 
-typedef struct PID_PARAM_ {
-  float kP;
-  float kI;
-  float kD;
-  float Imax;
-  } PID_PARAM;
+
 
 PID_PARAM posholdPID_PARAM;
 PID_PARAM poshold_ratePID_PARAM;
@@ -225,7 +220,7 @@ uint8_t GPS_Compute(void) {
   static uint32_t nav_loopTimer;
 
   //check that we have a valid frame, if not then return immediatly
-//  if (GPS.GPS_Frame == 0) return 0; else GPS.GPS_Frame = 0;
+  if (GPS.GPS_Frame == 0) return 0; else GPS.GPS_Frame = 0;
 
   //Apply moving average filter to GPS data
   if (1) {
@@ -388,7 +383,7 @@ static void GPS_calc_poshold(void) {
     nav[axis] +=d;
     // nav[axis]  = constrain(nav[axis], -NAV_BANK_MAX, NAV_BANK_MAX);
     nav[axis]  = constrain_int16(nav[axis], -NAV_BANK_MAX, NAV_BANK_MAX);
-    navPID[axis].integrator = poshold_ratePID[axis].integrator;
+    //navPID[axis].integrator = poshold_ratePID[axis].integrator;
   }
 }
 
@@ -572,17 +567,17 @@ uint8_t hex_c(uint8_t n) {    // convert '0'..'9','A'..'F' to 0..15
 
 //Get the relevant P I D values and set the PID controllers
 void GPS_set_pids(void) {
-  posholdPID_PARAM.kP   = 0;//(float)conf.pid[PIDPOS].P8/100.0;
-  posholdPID_PARAM.kI   = 0;//(float)conf.pid[PIDPOS].I8/100.0;
-  posholdPID_PARAM.Imax = POSHOLD_RATE_IMAX * 100;
+  posholdPID_PARAM.kP   = 0.15f;
+  posholdPID_PARAM.kI   = 0;
+  posholdPID_PARAM.Imax = 2000;
 
-  poshold_ratePID_PARAM.kP   = 0;//(float)conf.pid[PIDPOSR].P8/10.0;
-  poshold_ratePID_PARAM.kI   = 0;//(float)conf.pid[PIDPOSR].I8/100.0;
-  poshold_ratePID_PARAM.kD   = 0;//(float)conf.pid[PIDPOSR].D8/1000.0;
-  poshold_ratePID_PARAM.Imax = POSHOLD_RATE_IMAX * 100;
+  poshold_ratePID_PARAM.kP   = 3.4f;
+  poshold_ratePID_PARAM.kI   = 0.14f;
+  poshold_ratePID_PARAM.kD   = 0.053f;
+  poshold_ratePID_PARAM.Imax = 2000;
 
-  navPID_PARAM.kP   = 0;//(float)conf.pid[PIDNAVR].P8/10.0;
-  navPID_PARAM.kI   = 0;//(float)conf.pid[PIDNAVR].I8/100.0;
-  navPID_PARAM.kD   = 0;//(float)conf.pid[PIDNAVR].D8/1000.0;
-  navPID_PARAM.Imax = POSHOLD_RATE_IMAX * 100;
+  navPID_PARAM.kP   = 2.5f;
+  navPID_PARAM.kI   = 0.33f;
+  navPID_PARAM.kD   = 0.053f;
+  navPID_PARAM.Imax = 2000;
   }

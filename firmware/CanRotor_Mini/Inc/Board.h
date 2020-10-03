@@ -71,6 +71,10 @@ extern att_t att;
 
 extern debug_t Debug_var;
 
+extern PID_PARAM posholdPID_PARAM;
+extern PID_PARAM poshold_ratePID_PARAM;
+extern PID_PARAM navPID_PARAM;
+
 extern int16_t  GPS_angle[2];
 extern int32_t  GPS_coord[2];
 

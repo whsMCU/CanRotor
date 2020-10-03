@@ -125,18 +125,29 @@ void EEPROM_Test()
 
 void EEPROM_Init()
 {
-   for(int i = 0; i < 3; i++){
-     pid.kp[i] = readFloat( 0 + (4*i));
-     pid.ki[i] = readFloat(12 + (4*i));
-     pid.kd[i] = readFloat(24 + (4*i));
 
-     pid.kp1[i] = readFloat(36 + (4*i));
+  posholdPID_PARAM.kP = readFloat(0); //GPS PID
+  posholdPID_PARAM.kI = readFloat(4);
+
+  poshold_ratePID_PARAM.kP = readFloat(8);
+  poshold_ratePID_PARAM.kI = readFloat(12);
+  poshold_ratePID_PARAM.kD = readFloat(16);
+
+  navPID_PARAM.kP = readFloat(20);
+  navPID_PARAM.kI = readFloat(24);
+  navPID_PARAM.kD = readFloat(28);
+  posholdPID_PARAM.Imax = readFloat(32);
+  poshold_ratePID_PARAM.Imax = readFloat(32);
+  navPID_PARAM.Imax = readFloat(32);
+
+   for(int i = 0; i < 3; i++){
+     pid.kp1[i] = readFloat(36 + (4*i));  //Dual_PID
      pid.ki1[i] = readFloat(48 + (4*i));
      pid.kp2[i] = readFloat(60 + (4*i));
      pid.ki2[i] = readFloat(72 + (4*i));
      pid.kd2[i] = readFloat(84 + (4*i));
 
-     pid.kp_rate[i] = readFloat(96 + (4*i));
+     pid.kp_rate[i] = readFloat(96 + (4*i)); // Rate_PID
      pid.ki_rate[i] = readFloat(108 + (4*i));
      pid.kd_rate[i] = readFloat(120 + (4*i));
 

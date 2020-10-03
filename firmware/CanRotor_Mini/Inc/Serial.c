@@ -560,32 +560,32 @@ void SerialCom(void) {
 
 		 case MSP_PID:
      { struct {
-        uint16_t ROLL[3];
+        uint16_t GPS_P[3];
         uint16_t outer_ROLL[2];
         uint16_t inner_ROLL[3];
         uint16_t ROLL_rate[3];
 
-        uint16_t PITCH[3];
+        uint16_t GPS_I[3];
         uint16_t outer_PITCH[2];
         uint16_t inner_PITCH[3];
         uint16_t PITCH_rate[3];
 
-        uint16_t YAW[3];
+        uint16_t GPS_D[3];
         uint16_t outer_YAW[2];
         uint16_t inner_YAW[3];
         uint16_t YAW_rate[3];
       } pid_t;
 
 
-          pid_t.ROLL[0]  = (int16_t) (pid.kp[ROLL]  * 10);
-          pid_t.ROLL[1]  = (int16_t) (pid.ki[ROLL]  * 10);
-          pid_t.ROLL[2]  = (int16_t) (pid.kd[ROLL]  * 100);
-          pid_t.PITCH[0] = (int16_t) (pid.kp[PITCH] * 10);
-          pid_t.PITCH[1] = (int16_t) (pid.ki[PITCH] * 10);
-          pid_t.PITCH[2] = (int16_t) (pid.kd[PITCH] * 100);
-          pid_t.YAW[0]   = (int16_t) (pid.kp[YAW]   * 10);
-          pid_t.YAW[1]   = (int16_t) (pid.ki[YAW]   * 10);
-          pid_t.YAW[2]   = (int16_t) (pid.kd[YAW]   * 100);
+          pid_t.GPS_P[0]  = (int16_t) (posholdPID_PARAM.kP  * 100);
+          pid_t.GPS_P[1]  = (int16_t) (poshold_ratePID_PARAM.kP  * 100);
+          pid_t.GPS_P[2]  = (int16_t) (navPID_PARAM.kP  * 100);
+          pid_t.GPS_I[0] = (int16_t) (posholdPID_PARAM.kI * 100);
+          pid_t.GPS_I[1] = (int16_t) (poshold_ratePID_PARAM.kI * 100);
+          pid_t.GPS_I[2] = (int16_t) (navPID_PARAM.kI * 100);
+          pid_t.GPS_D[0]   = (int16_t) (poshold_ratePID_PARAM.kD  * 1000);
+          pid_t.GPS_D[1]   = (int16_t) (navPID_PARAM.kD   * 1000);
+          pid_t.GPS_D[2]   = (int16_t) (posholdPID_PARAM.Imax);
 
           pid_t.outer_ROLL[0] = (int16_t) (pid.kp1[ROLL] * 10);
           pid_t.outer_ROLL[1] = (int16_t) (pid.ki1[ROLL] * 10);
@@ -633,13 +633,53 @@ void SerialCom(void) {
 	     }
 
 		 case MSP_SET_PID:
+
+		   posholdPID_PARAM.kP   = 0.15f;
+		   posholdPID_PARAM.kI   = 0;
+		   posholdPID_PARAM.Imax = 2000;
+
+		   poshold_ratePID_PARAM.kP   = 3.4f;
+		   poshold_ratePID_PARAM.kI   = 0.14f;
+		   poshold_ratePID_PARAM.kD   = 0.053f;
+		   poshold_ratePID_PARAM.Imax = 2000;
+
+		   navPID_PARAM.kP   = 2.5f;
+		   navPID_PARAM.kI   = 0.33f;
+		   navPID_PARAM.kD   = 0.053f;
+		   navPID_PARAM.Imax = 2000;
+
 			 	for(i=0; i < 3; i++){
-				 pid.kp[i] = (float) read16();
-				 pid.kp[i] /= 10;
-				 pid.ki[i] = (float) read16();
-				 pid.ki[i] /= 10;
-				 pid.kd[i] = (float) read16();
-				 pid.kd[i] /= 100;
+			 	  if(i==0){
+			 	   posholdPID_PARAM.kP   = (float) read16();
+			 	   posholdPID_PARAM.kP /= 100;
+
+	          posholdPID_PARAM.kI = (float) read16();
+	          posholdPID_PARAM.kI /= 100;
+
+	          posholdPID_PARAM.Imax = (float) read16();
+	          poshold_ratePID_PARAM.Imax = posholdPID_PARAM.Imax;
+	          navPID_PARAM.Imax = posholdPID_PARAM.Imax;
+			 	  }else if(i == 1){
+			 	   poshold_ratePID_PARAM.kP = (float) read16();
+	         poshold_ratePID_PARAM.kP /= 100;
+
+	         poshold_ratePID_PARAM.kI = (float) read16();
+	         poshold_ratePID_PARAM.kI /= 100;
+
+	         poshold_ratePID_PARAM.kD = (float) read16();
+	         poshold_ratePID_PARAM.kD /= 1000;
+
+
+			 	  }else if(i == 2){
+	         navPID_PARAM.kP = (float) read16();
+	         navPID_PARAM.kP /= 100;
+
+	         navPID_PARAM.kI = (float) read16();
+	         navPID_PARAM.kI /= 100;
+
+			 	   navPID_PARAM.kD = (float) read16();
+			 	   navPID_PARAM.kD /= 1000;
+			 	  }
 
 				 pid.kp1[i] = (float) read16();
 	       pid.kp1[i] /= 10;
@@ -766,11 +806,16 @@ void SerialCom(void) {
 
 	    case TELEMERY_PID_SAVE:
 	      RGB_B_TOGGLE;
+	      writeFloat(0, posholdPID_PARAM.kP);
+	      writeFloat(4, posholdPID_PARAM.kI);
+	      writeFloat(8, poshold_ratePID_PARAM.kP);
+	      writeFloat(12, poshold_ratePID_PARAM.kI);
+	      writeFloat(16, poshold_ratePID_PARAM.kD);
+	      writeFloat(20, navPID_PARAM.kP);
+	      writeFloat(24, navPID_PARAM.kI);
+	      writeFloat(28, navPID_PARAM.kD);
+	      writeFloat(32, posholdPID_PARAM.Imax);
 	      for(int i = 0; i < 3; i++){
-	        writeFloat(  0+(4*i), pid.kp[i]);
-	        writeFloat( 12+(4*i), pid.ki[i]);
-	        writeFloat( 24+(4*i), pid.kd[i]);
-
           writeFloat( 36+(4*i), pid.kp1[i]);
           writeFloat( 48+(4*i), pid.ki1[i]);
           writeFloat( 60+(4*i), pid.kp2[i]);

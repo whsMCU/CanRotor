@@ -203,12 +203,13 @@ yawSlider  = controlP5.addSlider("yaw", -180, 180, 0, 450+200, 170, 10, 100).set
 
   for( i=0;i<PIDITEMS;i++) {
     confP[i] = (controlP5.Numberbox) hideLabel(controlP5.addNumberbox("confP"+i,0,xParam+40,yParam+20+i*17,30,14));
-    confP[i].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(1).setMultiplier(0.1).setMax(20);
+    confP[i].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(2).setMultiplier(0.01).setMax(20);
     confI[i] = (controlP5.Numberbox) hideLabel(controlP5.addNumberbox("confI"+i,0,xParam+75,yParam+20+i*17,40,14));
-    confI[i].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(1).setMultiplier(0.1).setMax(20);
+    confI[i].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(2).setMultiplier(0.01).setMax(20);
     confD[i] = (controlP5.Numberbox) hideLabel(controlP5.addNumberbox("confD"+i,0,xParam+120,yParam+20+i*17,30,14));
-    confD[i].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(2).setMultiplier(0.01).setMax(20);
+    confD[i].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(3).setMultiplier(0.001).setMax(20);
   }
+  confD[0].setColorBackground(red_).setMin(0).setDirection(Controller.HORIZONTAL).setDecimalPrecision(0).setMultiplier(1).setMax(4000);
            
   for( i=0;i<PIDITEMS;i++) {
     confP_dual_outer[i] = (controlP5.Numberbox) hideLabel(controlP5.addNumberbox("confP_dual_outer"+i,0,xParam+40,yParam+80+i*17,30,14));
@@ -481,19 +482,19 @@ public void evaluateCommand(byte cmd, int dataSize) {
           byteP_outer[i] = read16();byteI_outer[i] = read16();byteP_inner[i] = read16();byteI_inner[i] = read16();byteD_inner[i] = read16();
           byteP_rate[i] = read16();byteI_rate[i] = read16();byteD_rate[i] = read16();
           switch (i) {
-           case 0:confP[i].setValue(byteP[i]/10.0);confI[i].setValue(byteI[i]/10.0);confD[i].setValue(byteD[i]/100.0);
+           case 0:confP[0].setValue(byteP[i]/100.0);confP[1].setValue(byteI[i]/100.0);confP[2].setValue(byteD[i]/100.0);
                   confP_dual_outer[i].setValue(byteP_outer[i]/10.0);confI_dual_outer[i].setValue(byteI_outer[i]/10.0);
                   confP_dual_inner[i].setValue(byteP_inner[i]/10.0);confI_dual_inner[i].setValue(byteI_inner[i]/10.0);confD_dual_inner[i].setValue(byteD_inner[i]/100.0);
                   confP_rate[i].setValue(byteP_rate[i]/10.0);confI_rate[i].setValue(byteI_rate[i]/10.0);confD_rate[i].setValue(byteD_rate[i]/100.0);
            break;
            
-           case 1:confP[i].setValue(byteP[i]/10.0);confI[i].setValue(byteI[i]/10.0);confD[i].setValue(byteD[i]/100.0);
+           case 1:confI[0].setValue(byteP[i]/100.0);confI[1].setValue(byteI[i]/100.0);confI[2].setValue(byteD[i]/100.0);
                   confP_dual_outer[i].setValue(byteP_outer[i]/10.0);confI_dual_outer[i].setValue(byteI_outer[i]/10.0);
                   confP_dual_inner[i].setValue(byteP_inner[i]/10.0);confI_dual_inner[i].setValue(byteI_inner[i]/10.0);confD_dual_inner[i].setValue(byteD_inner[i]/100.0);           
                   confP_rate[i].setValue(byteP_rate[i]/10.0);confI_rate[i].setValue(byteI_rate[i]/10.0);confD_rate[i].setValue(byteD_rate[i]/100.0);
            break;
            
-           case 2:confP[i].setValue(byteP[i]/10.0);confI[i].setValue(byteI[i]/10.0);confD[i].setValue(byteD[i]/100.0);
+           case 2:confD[0].setValue(byteD[i]);confD[1].setValue(byteP[i]/1000.0);confD[2].setValue(byteI[i]/1000.0);
                   confP_dual_outer[i].setValue(byteP_outer[i]/10.0);confI_dual_outer[i].setValue(byteI_outer[i]/10.0);
                   confP_dual_inner[i].setValue(byteP_inner[i]/10.0);confI_dual_inner[i].setValue(byteI_inner[i]/10.0);confD_dual_inner[i].setValue(byteD_inner[i]/100.0);          
                   confP_rate[i].setValue(byteP_rate[i]/10.0);confI_rate[i].setValue(byteI_rate[i]/10.0);confD_rate[i].setValue(byteD_rate[i]/100.0);
@@ -904,10 +905,10 @@ debug1Slider.setValue(debug1);debug2Slider.setValue(debug2);debug3Slider.setValu
   textFont(font15);    
   text("P",xParam+45,yParam+15);text("I",xParam+90,yParam+15);text("D",xParam+130,yParam+15);
   textFont(font12);
-  text("Angle_PID",xParam+170,yParam+49);
-  text("ROLL",xParam+3,yParam+32);
-  text("PITCH",xParam+3,yParam+32+1*17);
-  text("YAW",xParam+3,yParam+32+2*17);
+  text("GPS_PID",xParam+170,yParam+49);
+  text("GPS",xParam+3,yParam+32);
+  text("RATE",xParam+3,yParam+32+1*17);
+  text("NAV",xParam+3,yParam+32+2*17);
   
   text("Dual_PID",xParam+170,yParam+133);
   text("R_OUT",xParam+3,yParam+90);
@@ -1233,15 +1234,15 @@ public void WRITE() {
   //   tmp_I[i] = (int)(confI[i].getValue()*10);
   //   tmp_D[i] = (int)(confD[i].getValue()*10);
   // }
-     tmp_P[ROLL]   = (int)(confP[ROLL].getValue()*10);
-     tmp_P[PITCH]  = (int)(confP[ROLL].getValue()*10);
-     tmp_P[YAW]    = (int)(confP[YAW].getValue()*10);
-     tmp_I[ROLL]   = (int)(confI[ROLL].getValue()*10);
-     tmp_I[PITCH]  = (int)(confI[ROLL].getValue()*10);
-     tmp_I[YAW]    = (int)(confI[YAW].getValue()*10);
-     tmp_D[ROLL]   = (int)(confD[ROLL].getValue()*100);
-     tmp_D[PITCH]  = (int)(confD[ROLL].getValue()*100);
-     tmp_D[YAW]    = (int)(confD[YAW].getValue()*100);
+     tmp_P[ROLL]   = (int)(confP[ROLL].getValue()*100);
+     tmp_P[PITCH]  = (int)(confP[PITCH].getValue()*100);
+     tmp_P[YAW]    = (int)(confP[YAW].getValue()*100);
+     tmp_I[ROLL]   = (int)(confI[ROLL].getValue()*100);
+     tmp_I[PITCH]  = (int)(confI[PITCH].getValue()*100);
+     tmp_I[YAW]    = (int)(confI[YAW].getValue()*100);
+     tmp_D[ROLL]   = (int)(confD[ROLL].getValue());
+     tmp_D[PITCH]  = (int)(confD[PITCH].getValue()*1000);
+     tmp_D[YAW]    = (int)(confD[YAW].getValue()*1000);
      
      tmp_P_dual_outer[ROLL] = (int)(confP_dual_outer[ROLL].getValue()*10);
      tmp_P_dual_outer[PITCH] = (int)(confP_dual_outer[ROLL].getValue()*10);
