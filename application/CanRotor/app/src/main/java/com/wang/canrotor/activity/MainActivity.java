@@ -465,9 +465,9 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
 //                    }
 
                     mspProtocol.SerialCom(data);
-                    start = System.currentTimeMillis();
-                    Log.w("Period_Time", (start - end)+"ms");
-                    end = System.currentTimeMillis();
+//                    start = System.currentTimeMillis();
+//                    Log.w("Period_Time", (start - end)+"ms");
+//                    end = System.currentTimeMillis();
 
                     state_CycleTime.setText(Integer.toString(mspProtocol.cycleTime));
                     //Log.d("WANG_D", "값이 왜 멈춰는거야? "+Integer.toString(mspProtocol.cycleTime));
@@ -494,15 +494,15 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                     }
 
                     if (mspProtocol.error == 0) {
-                        drone_Error.setText("에러 없음 (code : 0)");
+                        drone_Error.setText("에러 없음");
                     } else if (mspProtocol.error == 1) {
-                        drone_Error.setText("초기화 실패 (code : 1)");
+                        drone_Error.setText("초기화 실패");
                     } else if (mspProtocol.error == 2) {
-                        drone_Error.setText("내부 통신 에러 (code : 2)");
+                        drone_Error.setText("내부 통신 에러");
                     } else if (mspProtocol.error == 3) {
-                        drone_Error.setText("조정기 초기화 실패 (code : 3)");
+                        drone_Error.setText("조정기 초기화 실패");
                     } else if (mspProtocol.error == 4) {
-                        drone_Error.setText("루프시간 초과 (code : 4)");
+                        drone_Error.setText("루프시간 초과");
                     }
                     state_Alt.setText(Float.toString(mspProtocol.alt));
                     state_Volt.setText(Float.toString(mspProtocol.VBAT));
@@ -544,7 +544,7 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
             while (true) {
                 try {
                     while (msp_request) {
-                        //Log.d("Thread_wang", "mainThread");
+                        Log.d("Thread_wang", "mainThread");
                         if (read_flag != true) {
                             int[] requests = {MSP_MOBILE};
                             byte[] arr = mspProtocol.sendRequestMSP(mspProtocol.requestMSP(requests));
@@ -628,6 +628,10 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                     setup_bundle.putString("mot_2", Integer.toString(mspProtocol.mot[1]));
                     setup_bundle.putString("mot_3", Integer.toString(mspProtocol.mot[2]));
                     setup_bundle.putString("mot_4", Integer.toString(mspProtocol.mot[3]));
+                    setup_bundle.putInt("mot_1_int", mspProtocol.mot[0]);
+                    setup_bundle.putInt("mot_1_int", mspProtocol.mot[1]);
+                    setup_bundle.putInt("mot_1_int", mspProtocol.mot[2]);
+                    setup_bundle.putInt("mot_1_int", mspProtocol.mot[3]);
 
                     setupFragment.setArguments(setup_bundle);
                     Thread.sleep(500);

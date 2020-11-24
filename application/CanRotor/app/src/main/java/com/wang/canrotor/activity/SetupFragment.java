@@ -144,11 +144,12 @@ public class SetupFragment extends Fragment {
                         mot_3.setText(bundle.getString("mot_3"));
                         mot_4.setText(bundle.getString("mot_4"));
 
-                        sb_mot_1.setProgress(bundle.getInt("mot_1"));
-                        sb_mot_2.setProgress(bundle.getInt("mot_2"));
-                        sb_mot_3.setProgress(bundle.getInt("mot_3"));
-                        sb_mot_4.setProgress(bundle.getInt("mot_4"));
-                        Log.d("Motor_data", Mot_data[0] + "show값" + Mot_data[1] + "값" + Mot_data[2] + "값" + Mot_data[3] + "값");
+                        sb_mot_1.setProgress(bundle.getInt("mot_1_int"));
+                        sb_mot_2.setProgress(bundle.getInt("mot_2_int"));
+                        sb_mot_3.setProgress(bundle.getInt("mot_3_int"));
+                        sb_mot_4.setProgress(bundle.getInt("mot_4_int"));
+ //                       Log.d("Motor_data", Mot_data[0] + "show값" + Mot_data[1] + "값" + Mot_data[2] + "값" + Mot_data[3] + "값");
+
 //                        sb_mot_1.setProgress(bundle.getInt("sb_mot_1"));
 //                        sb_mot_2.setProgress(bundle.getInt("sb_mot_2"));
 //                        sb_mot_3.setProgress(bundle.getInt("sb_mot_3"));

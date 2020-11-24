@@ -174,21 +174,25 @@ int16_t constrain_int16(int16_t amt, int16_t low, int16_t high) {
 }
 
 void GPS_mode_check(void){
+  uint8_t gps_modes_check = f.GPS_HOLD_MODE;
   if(f.ARMED){
     if(GPS.fixquality){
       if(GPS.satellites > 5){
+        if(prv_gps_modes !=gps_modes_check){
          if(f.GPS_HOLD_MODE){
            f.GPS_MODE = GPS_MODE_HOLD;
            GPS_set_next_wp(&GPS_coord[LAT], &GPS_coord[LON], &GPS_coord[LAT], &GPS_coord[LON]); //hold at the current position
            //set_new_altitude(alt.EstAlt);                                //and current altitude
            NAV_state = NAV_STATE_HOLD_INFINIT;
          }
+         prv_gps_modes = gps_modes_check;
+        }
       }else{
         if (f.GPS_MODE == GPS_MODE_HOLD || f.GPS_MODE == GPS_MODE_RTH) {
           f.GPS_MODE = GPS_MODE_NONE;
           NAV_state = NAV_STATE_NONE;
           NAV_error = NAV_ERROR_SPOILED_GPS;
-          //prv_gps_modes = 0xff;                                          //invalidates mode check, to allow re evaluate rcOptions when numsats raised again
+          prv_gps_modes = 0xff;                                          //invalidates mode check, to allow re evaluate rcOptions when numsats raised again
         }
         nav[0] = 0; nav[1] = 0;
       }
@@ -199,7 +203,7 @@ void GPS_mode_check(void){
       //NAV_paused_at = 0;
       NAV_error = NAV_ERROR_GPS_FIX_LOST;
       //GPS_reset_nav();
-      //prv_gps_modes = 0xff;                                              //Gives a chance to restart mission when regain fix
+      prv_gps_modes = 0xff;                                              //Gives a chance to restart mission when regain fix
     }
   }else{
     //copter is disarmed
@@ -226,7 +230,7 @@ uint8_t GPS_Compute(void) {
   if (1) {
     GPS_filter_index = (GPS_filter_index+1) % GPS_FILTER_VECTOR_LENGTH;
     for (axis = 0; axis< 2; axis++) {
-      GPS_read[axis] = GPS.GPS_coord[axis]; //latest unfiltered data is in GPS_latitude and GPS_longitude
+      GPS_read[axis] = GPS_coord[axis]; //latest unfiltered data is in GPS_latitude and GPS_longitude
       GPS_degree[axis] = GPS_read[axis] / 10000000;  // get the degree to assure the sum fits to the int32_t
 
       // How close we are to a degree line ? its the first three digits from the fractions of degree
@@ -238,7 +242,7 @@ uint8_t GPS_Compute(void) {
       GPS_filter_sum[axis] += GPS_filter[axis][GPS_filter_index];
       GPS_filtered[axis] = GPS_filter_sum[axis] / GPS_FILTER_VECTOR_LENGTH + (GPS_degree[axis]*10000000);
       if ( NAV_state == NAV_STATE_HOLD_INFINIT || NAV_state == NAV_STATE_HOLD_TIMED) {      //we use gps averaging only in poshold mode...
-        if ( fraction3[axis]>1 && fraction3[axis]<999 ) GPS.GPS_coord[axis] = GPS_filtered[axis];
+        if ( fraction3[axis]>1 && fraction3[axis]<999 ) GPS_coord[axis] = GPS_filtered[axis];
       }
     }
   }
@@ -270,7 +274,6 @@ uint8_t GPS_Compute(void) {
     GPS_bearing(&GPS_coord[LAT],&GPS_coord[LON],&GPS_WP[LAT],&GPS_WP[LON],&target_bearing);
     GPS_distance_cm(&GPS_coord[LAT],&GPS_coord[LON],&GPS_WP[LAT],&GPS_WP[LON],&wp_distance);
     GPS_calc_location_error(&GPS_WP[LAT],&GPS_WP[LON],&GPS_coord[LAT],&GPS_coord[LON]);
-
 
     switch(NAV_state){
       case NAV_STATE_HOLD_INFINIT:
@@ -318,8 +321,8 @@ static void GPS_calc_velocity(void){
 
   if (init) {
     float tmp = 1.0/dTnav;
-    actual_speed[__X] = (float)(GPS.GPS_coord[LON] - last[LON]) *  GPS_scaleLonDown * tmp;
-    actual_speed[__Y] = (float)(GPS.GPS_coord[LAT]  - last[LAT])  * tmp;
+    actual_speed[__X] = (float)(GPS_coord[LON] - last[LON]) *  GPS_scaleLonDown * tmp;
+    actual_speed[__Y] = (float)(GPS_coord[LAT]  - last[LAT])  * tmp;
 
 //    //TODO: Check unrealistic speed changes and signal navigation about posibble gps signal degradation
 //    if (!GPS_conf.lead_filter) {
@@ -332,8 +335,8 @@ static void GPS_calc_velocity(void){
   }
   init=1;
 
-  last[LON] = GPS.GPS_coord[LON];
-  last[LAT] = GPS.GPS_coord[LAT];
+  last[LON] = GPS_coord[LON];
+  last[LAT] = GPS_coord[LAT];
 
 //  if (GPS_conf.lead_filter) {
 //    GPS_coord_lead[LON] = xLeadFilter.get_position(GPS_coord[LON], actual_speed[_X], GPS_LAG);

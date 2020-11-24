@@ -371,6 +371,7 @@ void SerialCom(void) {
       if ((timeMax - GPS_last_frame_seen) > 1200000) {
         //No update since 1200ms clear fix...
         f.GPS_FIX = 0;
+        GPS.fixquality = 0;
         GPS.satellites = 0;
       }
     }

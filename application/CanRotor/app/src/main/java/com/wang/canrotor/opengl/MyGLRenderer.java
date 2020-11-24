@@ -46,7 +46,7 @@ public class MyGLRenderer implements GLSurfaceView.Renderer {
         Matrix.translateM(mRotationMatrix, 0, 0, 0, 0);
 
         //Assign mRotationMatrix a rotation with the seekbar
-        Log.d("Rotate", "Test"+zoom);
+        //Log.d("Rotate", "Test"+zoom);
         Matrix.rotateM(mRotationMatrix, 0, zoom * 3.6f, 1.0f, 1.0f, 1.0f);
 
         // combine the model with the view matrix

@@ -137,8 +137,8 @@ void Control(void)
   if (( f.GPS_MODE != GPS_MODE_NONE ) && GPS.fixquality ) {
     float sin_yaw_y = sin(imu.actual_compass_heading*0.0174532925f);
     float cos_yaw_x = cos(imu.actual_compass_heading*0.0174532925f);
-    GPS_angle[ROLL]   = (nav[LON]*cos_yaw_x - nav[LAT]*sin_yaw_y) /10;
-    GPS_angle[PITCH]  = (nav[LON]*sin_yaw_y + nav[LAT]*cos_yaw_x) /10;
+    GPS_angle[ROLL]   = (nav[LON]*cos_yaw_x - nav[LAT]*sin_yaw_y)/10;
+    GPS_angle[PITCH]  = (nav[LON]*sin_yaw_y + nav[LAT]*cos_yaw_x)/10;
     } else {
       GPS_angle[ROLL]  = 0;
       GPS_angle[PITCH] = 0;
