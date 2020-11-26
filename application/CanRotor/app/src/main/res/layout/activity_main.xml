@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".activity.MainActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal">
 
     <TableLayout
-        android:layout_width="360dp"
+        android:layout_width="420dp"
         android:layout_height="match_parent"
         android:stretchColumns="*">
 
@@ -44,11 +42,11 @@
                 android:id="@+id/textARMED"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textMode"
@@ -63,11 +61,11 @@
                 android:id="@+id/textMODE"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp"/>
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textHeadfree"
@@ -82,11 +80,11 @@
                 android:id="@+id/textHEADFREE"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -107,11 +105,11 @@
                 android:id="@+id/textCYCLETIME"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textTemp"
@@ -126,11 +124,11 @@
                 android:id="@+id/textTEMP"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textVolt"
@@ -145,11 +143,11 @@
                 android:id="@+id/textVOLT"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -170,11 +168,11 @@
                 android:id="@+id/textALT"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textTest1"
@@ -189,11 +187,11 @@
                 android:id="@+id/textTEST1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textTest2"
@@ -208,11 +206,11 @@
                 android:id="@+id/textTEST2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -233,11 +231,11 @@
                 android:id="@+id/ROLL_View"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -250,13 +248,13 @@
 
             <TextView
                 android:id="@+id/PITCH_View"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -271,11 +269,11 @@
                 android:id="@+id/YAW_View"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -296,11 +294,11 @@
                 android:id="@+id/Radio_ROLL"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textPITCH"
@@ -315,11 +313,11 @@
                 android:id="@+id/Radio_PITCH"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textYAW"
@@ -334,11 +332,11 @@
                 android:id="@+id/Radio_YAW"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -359,11 +357,11 @@
                 android:id="@+id/Radio_THROT"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textGEAR"
@@ -378,11 +376,11 @@
                 android:id="@+id/Radio_GEAR"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textAUX1"
@@ -397,11 +395,11 @@
                 android:id="@+id/Radio_AUX1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
         </TableRow>
 
         <TableRow
@@ -416,17 +414,17 @@
                 android:background="@android:color/holo_green_dark"
                 android:gravity="center"
                 android:text="Drone_Error"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/drone_Error"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
 
             <TextView
                 android:id="@+id/textTelemetry_Error"
@@ -435,64 +433,72 @@
                 android:background="@android:color/holo_green_dark"
                 android:gravity="center"
                 android:text="Tele_Error"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/telemetry_Error"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
-                android:autoSizeTextType="uniform"
-                android:autoSizeMinTextSize="2dp"
                 android:autoSizeMaxTextSize="10dp"
-                android:autoSizeStepGranularity="1dp" />
+                android:autoSizeMinTextSize="2dp"
+                android:autoSizeStepGranularity="1dp"
+                android:autoSizeTextType="uniform"
+                android:gravity="center" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_span="2" />
         </TableRow>
 
         <TableRow
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1">
 
             <ToggleButton
                 android:id="@+id/toggleButton"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
                 android:text="ToggleButton"
                 android:textOff="통신정지 중"
                 android:textOn="통신 중"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button_Reset"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
                 android:text="리셋"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/button_ACCcalibration"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
                 android:text="ACC_CALIB"
                 android:textSize="10sp" />
 
             <Button
                 android:id="@+id/button_MAGcalibration"
-                android:layout_width="60dp"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
                 android:text="MAG_CALIB"
                 android:textSize="10sp" />
 
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="60dp"
-                android:layout_height="wrap_content" />
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:text="MAG_CALIB"
+                android:textSize="10sp"
+                android:visibility="invisible" />
+            <Button
+                android:layout_width="70dp"
+                android:layout_height="match_parent"
+                android:text="MAG_CALIB"
+                android:textSize="10sp"
+                android:visibility="invisible" />
 
         </TableRow>
-
     </TableLayout>
 
     <FrameLayout
