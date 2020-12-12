@@ -52,6 +52,14 @@ uint8_t write_Q(Queue_t *Q, char data){
   Q->head = (Q->head+1) % MAX_SIZE;
 	return TRUE;
 }
+uint8_t test_write_Q(Queue_t *Q, uint8_t data){
+  if(Q_full(Q)){
+    return FALSE;
+  }
+  Q->Ring_Buffer[Q->head] = data;
+  Q->head = (Q->head+1) % MAX_SIZE;
+  return TRUE;
+}
 
 uint8_t read_Q(Queue_t *Q){
 	if(Q_empty(Q)){

@@ -258,7 +258,7 @@ int main(void){
    mixTable();
    PwmWriteMotor();
 
-   //PrintData(3);   //GPS Data
+   //PrintData(15);
    //PrintData(10);  //Baro
    //PrintData(4);
    //PrintData(5);   //All Data Output

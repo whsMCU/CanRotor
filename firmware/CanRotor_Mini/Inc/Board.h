@@ -26,6 +26,7 @@
 #include "PID.h"
 #include "PWM.h"
 #include "Queue.h"
+#include "uart.h"
 #include "Radio.h"
 #include "Sensor.h"
 #include "Serial.h"

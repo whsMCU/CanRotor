@@ -628,11 +628,6 @@ public class MainActivity extends AppCompatActivity implements PidFragment.PidFr
                     setup_bundle.putString("mot_2", Integer.toString(mspProtocol.mot[1]));
                     setup_bundle.putString("mot_3", Integer.toString(mspProtocol.mot[2]));
                     setup_bundle.putString("mot_4", Integer.toString(mspProtocol.mot[3]));
-                    setup_bundle.putInt("mot_1_int", mspProtocol.mot[0]);
-                    setup_bundle.putInt("mot_2_int", mspProtocol.mot[1]);
-                    setup_bundle.putInt("mot_3_int", mspProtocol.mot[2]);
-                    setup_bundle.putInt("mot_4_int", mspProtocol.mot[3]);
-                    Log.d("Motor_data_soce", "Mot1 : "+ mspProtocol.mot[0] + ", Mot2 : " +  mspProtocol.mot[1] + ", Mot3 : " +  mspProtocol.mot[2] + ", Mot4 : " +  mspProtocol.mot[3]);
                     setupFragment.setArguments(setup_bundle);
                     Thread.sleep(500);
 

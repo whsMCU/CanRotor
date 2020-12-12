@@ -2,8 +2,10 @@ package com.wang.canrotor.activity;
 
 import android.content.Context;
 import android.opengl.GLSurfaceView;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -101,18 +103,25 @@ public class SetupFragment extends Fragment {
                             mot_3.setText(Integer.toString(min));
                             mot_4.setText(Integer.toString(min));
                             running = true;
+                            showThread = new setupshowThread();
+                            showThread.setDaemon(true);
+                            showThread.start();
                             Toast.makeText(getContext(), "조정기로 조작 할 수 있습니다.", Toast.LENGTH_SHORT).show();
                         }
                         break;
                     case R.id.radioButton_Manual:
                         if (setup_fragment_listener != null) {
                             setup_fragment_listener.radioClicked(true);
-                            mot_thread_running = true;
                             running = false;
                             sb_mot_1.setProgress(0);
                             sb_mot_2.setProgress(0);
                             sb_mot_3.setProgress(0);
                             sb_mot_4.setProgress(0);
+                            mot_thread_running = true;
+                            motThread mot_Thread = new motThread();
+                            t = new Thread(mot_Thread);
+                            t.setDaemon(true);
+                            t.start();
                             Toast.makeText(getContext(), "수동으로 조작 할 수 있습니다.", Toast.LENGTH_SHORT).show();
                         }
                         break;
@@ -122,6 +131,7 @@ public class SetupFragment extends Fragment {
         moterListener();
         motThread mot_Thread = new motThread();
         t = new Thread(mot_Thread);
+        t.setDaemon(true);
         t.start();
 
         running = true;
@@ -132,28 +142,28 @@ public class SetupFragment extends Fragment {
     }
 
     public class setupshowThread extends Thread {
+        @RequiresApi(api = Build.VERSION_CODES.N)
         @Override
         public void run() {
             while (running) {
                 try {
-                    Log.d("Thread_wang", "setupThread"+showThread.getName());
-                    Bundle bundle = getArguments();
-                    if (bundle != null) {
-                        mot_1.setText(bundle.getString("mot_1"));
-                        mot_2.setText(bundle.getString("mot_2"));
-                        mot_3.setText(bundle.getString("mot_3"));
-                        mot_4.setText(bundle.getString("mot_4"));
+                    Log.d("Thread_wang_setup", "setupThread"+showThread.getName());
+                    if (getArguments() != null) {
+                        String[] temp = new String[4];
+                        temp[0] = getArguments().getString("mot_1");
+                        temp[1] = getArguments().getString("mot_2");
+                        temp[2] = getArguments().getString("mot_3");
+                        temp[3] = getArguments().getString("mot_4");
+                        Log.d("Thread_wang_setup_reci", temp[0] + " 값 " + Integer.parseInt(temp[1]) + " 값 " + temp[2] + " 값 " + temp[3] + " 값 ");
+                        mot_1.setText(temp[0]);
+                        mot_2.setText(temp[1]);
+                        mot_3.setText(temp[2]);
+                        mot_4.setText(temp[3]);
 
-                        sb_mot_1.setProgress(bundle.getInt("mot_1_int"));
-                        sb_mot_2.setProgress(bundle.getInt("mot_2_int"));
-                        sb_mot_3.setProgress(bundle.getInt("mot_3_int"));
-                        sb_mot_4.setProgress(bundle.getInt("mot_4_int"));
-                        Log.d("Motor_data", bundle.getInt("mot_1_int") + "값" + Mot_data[1] + "값" + Mot_data[2] + "값" + Mot_data[3] + "값");
-
-//                        sb_mot_1.setProgress(bundle.getInt("sb_mot_1"));
-//                        sb_mot_2.setProgress(bundle.getInt("sb_mot_2"));
-//                        sb_mot_3.setProgress(bundle.getInt("sb_mot_3"));
-//                        sb_mot_4.setProgress(bundle.getInt("sb_mot_4"));
+                        sb_mot_1.setProgress(Integer.parseInt(temp[0])-min, true);
+                        sb_mot_2.setProgress(Integer.parseInt(temp[1])-min, true);
+                        sb_mot_3.setProgress(Integer.parseInt(temp[2])-min, true);
+                        sb_mot_4.setProgress(Integer.parseInt(temp[3])-min, true);
                     }
                     Thread.sleep(500);
                 } catch (InterruptedException e) {
@@ -169,9 +179,10 @@ public class SetupFragment extends Fragment {
         public void run() {
             while (mot_thread_running) {
                 try {
+                    Log.d("Thread_wang_setup", "Motor_send_Thread"+showThread.getName());
                     if (setup_fragment_listener != null) {
                         setup_fragment_listener.motor_data(Mot_data);
-                        Log.d("Motor_data", Mot_data[0] + " 값 " + Mot_data[1] + " 값 " + Mot_data[2] + " 값 " + Mot_data[3] + " 값 ");
+                        Log.d("Thread_wang_setup_send", Mot_data[0] + " 값 " + Mot_data[1] + " 값 " + Mot_data[2] + " 값 " + Mot_data[3] + " 값 ");
                     }
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
@@ -220,6 +231,8 @@ public class SetupFragment extends Fragment {
     @Override
     public void onStop() {
         super.onStop();
+        running = false;
+        mot_thread_running = false;
         Log.d("Fragment", "Setup_Fragment(onStop)");
     }
 

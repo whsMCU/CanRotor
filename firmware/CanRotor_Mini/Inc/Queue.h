@@ -19,6 +19,7 @@ bool     Init_Buffer(Queue_t *Q);
 uint8_t  Q_full(Queue_t *Q);
 uint8_t  Q_empty(Queue_t *Q);
 uint8_t  write_Q(Queue_t *Q, char data);
+uint8_t  test_write_Q(Queue_t *Q, uint8_t data);
 uint8_t  read_Q(Queue_t *Q);
 uint32_t QueueAvailable(Queue_t *Q);
 void     QueueFlush(Queue_t *Q);

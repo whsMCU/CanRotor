@@ -301,6 +301,9 @@ void PrintData(uint8_t command)
 		sprintf(Buf,"R/P/Y: %f %f %f\r\n",AHRS.Roll, AHRS.Pitch, AHRS.Yaw);
 	     HAL_UART_Transmit_DMA(&huart1, (uint8_t*)Buf, strlen(Buf));
 		break;
+  case 15:
+    uartPrintf(_DEF_UART2, "Hello : %f", imu.AHRS[ROLL]);
+    break;
 	}
  }
 }
