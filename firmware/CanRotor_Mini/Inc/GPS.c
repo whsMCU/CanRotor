@@ -8,6 +8,11 @@
 //#include "GPS.h"
 #include "Board.h"
 
+static void GPS_distance_cm(int32_t* lat1, int32_t* lon1, int32_t* lat2, int32_t* lon2,uint32_t* dist);
+static void GPS_calc_velocity(void);
+static void GPS_calc_location_error( int32_t* target_lat, int32_t* target_lng, int32_t* gps_lat, int32_t* gps_lng );
+static void GPS_calc_poshold(void);
+
 const unsigned char Disable_GPGSV[] = {
       0xB5, 0x62, 0x06, 0x01, 0x03, 0x00, 0xF0, 0x03, 0x00, 0xFD, 0x15
 };

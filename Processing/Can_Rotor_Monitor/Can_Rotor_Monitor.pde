@@ -56,7 +56,8 @@ int mot[] = new int[4],
     RCChan[] = new int[16];
 
 int satellites;
-float latitudeDegrees, longitudeDegrees;
+//float latitudeDegrees, longitudeDegrees;
+int latitudeDegrees, longitudeDegrees;
 
 float gx, gy, gz, ax, ay, az, magx, magy, magz, head, angx, angy, debug1, debug2, debug3, debug4;
 float angyLevelControl, angCalc;
@@ -544,19 +545,19 @@ public void evaluateCommand(byte cmd, int dataSize) {
              ANGLE_MODE = 0;
            } 
            if((mode&(1<<4))>0){
-             GPS_HOLD_MODE = 1;
-           }else{
-              GPS_HOLD_MODE = 0;
-           }
-           if((mode&(1<<5))>0){
              buttonCALIBRATE_ACC.setColorBackground(green_);
            }else{
-             buttonCALIBRATE_ACC.setColorBackground(red_);
-           } 
-           if((mode&(1<<6))>0){
+              buttonCALIBRATE_ACC.setColorBackground(red_);
+           }
+           if((mode&(1<<5))>0){
              buttonCALIBRATE_MAG.setColorBackground(green_);
            }else{
              buttonCALIBRATE_MAG.setColorBackground(red_);
+           } 
+           if((mode&(1<<6))>0){
+             GPS_HOLD_MODE = 1;
+           }else{
+             GPS_HOLD_MODE = 0;
            } 
         roll = read16()/10;
         pitch = read16()/10;

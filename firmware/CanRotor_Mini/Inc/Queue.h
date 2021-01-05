@@ -9,7 +9,6 @@ typedef struct queue {
   volatile uint8_t tail;
   volatile uint8_t size;
   volatile uint8_t temp;
-//uint8_t *p_buf;
   volatile int cnt;
 } Queue_t;
 
